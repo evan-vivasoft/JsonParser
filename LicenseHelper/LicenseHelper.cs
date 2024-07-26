@@ -181,13 +181,26 @@ namespace JSONParser.LicenseHelper
         {
             try
             {
+                byte[] cipherBytes = Convert.FromBase64String(cipherText);
+
+                // Extract the salt from the beginning of the cipher bytes
+                byte[] salt = new byte[16];
+                Array.Copy(cipherBytes, 0, salt, 0, salt.Length);
+
+                // Derive the key and IV from the password and salt
+                var key = new Rfc2898DeriveBytes(ConfigurationManager.AppSettings.Get("EncryptionKey"), salt, 10000);
+                byte[] keyBytes = key.GetBytes(32);
+                byte[] ivBytes = key.GetBytes(16);
+
                 using (Aes aes = Aes.Create())
                 {
-                    aes.Key = Convert.FromBase64String(ConfigurationManager.AppSettings.Get("EncryptionKey"));
-                    aes.IV = Convert.FromBase64String(ConfigurationManager.AppSettings.Get("EncryptionIv"));
+                    aes.Key = keyBytes;
+                    aes.IV = ivBytes;
+                    aes.Padding = PaddingMode.PKCS7;
 
                     ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-                    using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(cipherText)))
+
+                    using (MemoryStream ms = new MemoryStream(cipherBytes, salt.Length, cipherBytes.Length - salt.Length))
                     {
                         using (CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
                         {
@@ -197,11 +210,20 @@ namespace JSONParser.LicenseHelper
                     }
                 }
             }
+            catch (CryptographicException ex)
+            {
+                throw new Exception($"Cryptographic error occurred during decryption: {ex.Message}", ex);
+            }
+            catch (FormatException ex)
+            {
+                throw new Exception($"Format error: {ex.Message}", ex);
+            }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception($"An error occurred during decryption: {ex.Message}", ex);
             }
         }
+
 
         private async Task<DeviceStatus> GetDeviceStatus ()
         {
@@ -235,9 +257,11 @@ namespace JSONParser.LicenseHelper
             }
         }
 
-        private string EncryptLicensesInfo()
+        private string EncryptLicensesInfo(LicenseInfo tmp = null)
         {
-            LicenseInfo licenseInfo = new LicenseInfo()
+            LicenseInfo licenseInfo = 
+                tmp ??
+                new LicenseInfo()
             {
                 InspectorPCBaseUrl = BaseUrl,
                 InspectorPCCustomerId = CustomerId.ToString(),
@@ -245,29 +269,42 @@ namespace JSONParser.LicenseHelper
                 InspectorPCApiToken = this._apiToken
             };
 
+            byte[] salt = new byte[16];
+            using (var rng = new RNGCryptoServiceProvider())
+            {
+                rng.GetBytes(salt);
+            }
+
+            // Derive a key and IV from the password and salt
+            var key = new Rfc2898DeriveBytes(ConfigurationManager.AppSettings.Get("EncryptionKey"), salt, 10000);
+            byte[] keyBytes = key.GetBytes(32);
+            byte[] ivBytes = key.GetBytes(16);
+
             using (Aes aes = Aes.Create())
             {
-                Rfc2898DeriveBytes passwordBytes = new Rfc2898DeriveBytes(ConfigurationManager.AppSettings.Get("EncryptionKey"), 20);
-                aes.Key = passwordBytes.GetBytes(32);
-                aes.IV = passwordBytes.GetBytes(16);
+                aes.Key = keyBytes;
+                aes.IV = ivBytes;
+                aes.Padding = PaddingMode.PKCS7;
 
-                ICryptoTransform cryptoTransform = aes.CreateEncryptor(aes.Key, aes.IV);
+                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
 
-                using(MemoryStream ms = new MemoryStream())
+                using (MemoryStream ms = new MemoryStream())
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, cryptoTransform, CryptoStreamMode.Write))
+                    // Write the salt to the beginning of the memory stream
+                    ms.Write(salt, 0, salt.Length);
+
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
                     {
                         BinaryFormatter formatter = new BinaryFormatter();
                         formatter.Serialize(cs, licenseInfo);
                     }
 
-                    var cipher = Convert.ToBase64String(ms.ToArray());
-                    return cipher;
+                    return Convert.ToBase64String(ms.ToArray());
                 }
             }
         }
         #endregion
-        
+
         #region Public Function
         public async void ProcessVerificationToken(string token, Action<string,string> callBack)
         {
