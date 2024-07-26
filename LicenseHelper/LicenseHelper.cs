@@ -289,7 +289,7 @@ namespace JSONParser.LicenseHelper
                 // Store neccessary information to the registry
                 this.StoreLicenseInformationToRegistry();
                 // Call this api after customer clicks on `Sync` button
-                await MaybeFetchAndStoreInformationJson();
+                //await MaybeFetchAndStoreInformationJson();
                 callBack?.Invoke(deviceStatus.license_status, licenseExpiredIn.ToString());
             }
             catch (Exception ex)

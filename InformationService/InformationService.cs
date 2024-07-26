@@ -81,14 +81,11 @@ namespace JSONParser.InformationService
             {
                 CreateFileIfNotExist(StationInfoFile);
 
-                List<PRSJson> prsData = await RequestHandler.GetAsync<List<PRSJson>>(baseUrl.TrimEnd('/') + ":8000/" + StationInformationUrl, reqHeader);
-
-                string jsonData = JsonSerializer.Serialize(prsData, new JsonSerializerOptions { WriteIndented = true });
-
+                string prsData = await RequestHandler.GetAsyncString(baseUrl.TrimEnd('/') + ":8000/" + StationInformationUrl, reqHeader);
 
                 using (StreamWriter writer = new StreamWriter(StationInfoFile))
                 {
-                    writer.WriteLine(jsonData);
+                    writer.WriteLine(prsData);
                 }
             }
             catch (Exception ex)
@@ -103,13 +100,11 @@ namespace JSONParser.InformationService
             {
                 CreateFileIfNotExist(InspectionProcedureFile);
 
-                List<InspectionProcedureJson> ipData = await RequestHandler.GetAsync<List<InspectionProcedureJson>>(baseUrl.TrimEnd('/') + ":8000/" + InspectionProcedureUrl, reqHeader);
-
-                string jsonData = JsonSerializer.Serialize(ipData, new JsonSerializerOptions { WriteIndented = true });
+                string ipData = await RequestHandler.GetAsyncString(baseUrl.TrimEnd('/') + ":8000/" + InspectionProcedureUrl, reqHeader);
 
                 using (StreamWriter writer = new StreamWriter(InspectionProcedureFile))
                 {
-                    writer.WriteLine(jsonData);
+                    writer.WriteLine(ipData);
                 }
             }
             catch (Exception ex)

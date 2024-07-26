@@ -46,7 +46,7 @@ namespace JSONParser.InspectionProcedure.ScriptCommandFactory
                     ObjectName = scriptCommand4Json.object_name,
                     MeasurePoint = scriptCommand4Json.measure_point,
                     Question = scriptCommand4Json.question,
-                    TypeQuestion = scriptCommand4Json.type_of_question,
+                    TypeQuestion = Helper.GetEnumValueFromDescription<TypeQuestion>(scriptCommand4Json.type_of_question),
                     TextOptions = new List<string>(),
                     InspectionPointId = scriptCommand4Json.inspection_point_id,
                     Required = scriptCommand4Json.required

@@ -45,6 +45,33 @@ namespace JSONParser.RequestHandler
             }
         }
 
+        public async Task<string> GetAsyncString(string url, Dictionary<string, string> maybeHeader = null)
+        {
+            try
+            {
+                var token = ConfigurationManager.AppSettings.Get("AuthToken");
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+
+                if (maybeHeader != null)
+                {
+                    foreach (var header in maybeHeader)
+                    {
+                        request.Headers.Add(header.Key, header.Value);
+                    }
+                }
+
+                var response = await _httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                var jsonString = await response.Content.ReadAsStringAsync();
+
+                return jsonString;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Message: {ex.Message}; Source: {ex.Source}; URL: {url}");
+            }
+        }
+
         public async Task<T> PostAsync<T>(string url, object data, Dictionary<string, string> headers = null)
         {
             try

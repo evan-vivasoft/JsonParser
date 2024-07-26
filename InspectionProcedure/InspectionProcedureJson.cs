@@ -83,7 +83,7 @@ namespace JSONParser.InspectionProcedure
             {
                 if (value != 10)
                 {
-                    throw new ArgumentException("measure frequency must be 10 or 15");
+                    throw new ArgumentException("measure frequency must be 10");
                 }
                 _measurefrequency = value;
             }
@@ -109,7 +109,7 @@ namespace JSONParser.InspectionProcedure
         public bool required { get; set; }
         public string[] items { get; set; }
         public string question { get; set; }
-        public TypeQuestion type_of_question { get; set; }
+        public string type_of_question { get; set; }
         public string option_1 { get; set; }
         public string option_2 { get; set; }
         public string option_3 { get; set; }
@@ -218,7 +218,7 @@ namespace JSONParser.InspectionProcedure
             get => _measureFreq;
             set
             {
-                if (value == 10 || value == 15)
+                if (value == 10)
                 {
                     _measureFreq = value;
                 }
