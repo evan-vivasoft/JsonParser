@@ -1,0 +1,2613 @@
+[
+  {
+    "name": "Reserveschiene PN25 (ohne Whu)",
+    "version": "0.3",
+    "sections": []
+  },
+  {
+    "name": "Reserveschiene PN25 (ohne Whu / mit SBV)",
+    "version": "0.1",
+    "sections": []
+  },
+  {
+    "name": "Reserveschiene PN16 ND/MD (ohne Whu)",
+    "version": "0.1",
+    "sections": []
+  },
+  {
+    "name": "Reserveschiene PN16 HD (ohne Whu)",
+    "version": "0.1",
+    "sections": []
+  },
+  {
+    "name": "Führungsschiene PN25 (ohne Whu)",
+    "version": "0.1",
+    "sections": []
+  },
+  {
+    "name": "Führungsschiene PN25 (ohne Whu / ohne SBV)",
+    "version": "0.1",
+    "sections": []
+  },
+  {
+    "name": "Führungsschiene PN16 ND/MD (ohne Whu)",
+    "version": "0.1",
+    "sections": []
+  },
+  {
+    "name": "Führungsschiene PN16 ND/MD (ohne Whu / ohne SBV)",
+    "version": "0.1",
+    "sections": [
+      {
+        "sequence": 1,
+        "name": "Sektion",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Bemerkungen in Datei speichern",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "0b9b7a9f-fe42-4741-9ce8-b59d3571694e",
+                  "command_type": "Scriptcommand_42",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "02da5297-db78-46d9-bf3f-cc33baccf994"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 2,
+        "name": "Anschließen",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Digital Manometer",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "558cc541-844a-442e-ac6b-3735cb4696d1",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Bevor Digital Manometer angeschlossen wird, auf CLEAR drücken."
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 2,
+                  "script_command_id": "45228e31-329e-412e-bc10-4bd919b5919c",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Anschluß Digital Manometer - Hebel vom Manometeradapter nach vorne umlegen"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 3,
+        "name": "0. Instruktionen",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Funktionsschalter in Position Regelschiene =",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "fe0ddbd9-eaf9-4422-a584-3826a10b88e9",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Funktionsschalter in Position Regelschiene ="
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 4,
+        "name": "Regler",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Fließdruck",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "6dad0111-d549-48f7-a913-7d6933de5738",
+                  "command_type": "Scriptcommand_55",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "624adaa5-13fb-40d0-9a4a-54cadb6446ed",
+                    "instruction": "Fließdruck (Netzdruck)",
+                    "digital_manometer": "TH2",
+                    "measuring_frequency": 10,
+                    "measuring_period": 30,
+                    "extra_measuring_period": 0
+                  }
+                }
+              ]
+            ]
+          },
+          {
+            "sequence": 2,
+            "name": "Ausgangs-Absperrarmatur",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "4453864f-056e-41f9-bd45-dd6b65661497",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Schließen der Ausgangs-Absperrarmatur."
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 2,
+                  "script_command_id": "d6a1737c-022b-4511-a209-2ee0b763b31d",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Entlüftung öffnen"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 3,
+                  "script_command_id": "34dfdcc7-65fc-4a52-afac-32154836ed9a",
+                  "command_type": "Scriptcommand_52",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "f0099bad-1236-45a4-9a48-58035c69bd49",
+                    "instruction": "Fließdruck über Entlüftung",
+                    "digital_manometer": "TH2",
+                    "measuring_frequency": 10,
+                    "measuring_period": 30,
+                    "extra_measuring_period": 0
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 4,
+                  "script_command_id": "8931466d-4150-4185-ad80-ab689374a7db",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Entlüftung schließen"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 5,
+                  "script_command_id": "7b31c9a5-b00b-4b6d-b321-059184f6f9ae",
+                  "command_type": "Scriptcommand_53",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "8b23c3fc-73ce-4dca-b33e-ecbc9f146203",
+                    "instruction": "Schließdruck 1",
+                    "digital_manometer": "TH2",
+                    "measuring_frequency": 10,
+                    "measuring_period": 60,
+                    "extra_measuring_period": 0
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 6,
+                  "script_command_id": "d6a1737c-022b-4511-a209-2ee0b763b31d",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Entlüftung öffnen"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 7,
+                  "script_command_id": "8931466d-4150-4185-ad80-ab689374a7db",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Entlüftung schließen"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 8,
+                  "script_command_id": "e338a465-94d3-4042-8053-47fe39971901",
+                  "command_type": "Scriptcommand_53",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "8979c5c5-7bd0-4cf2-ab6d-33c7be08f74e",
+                    "instruction": "Schließdruck 2",
+                    "digital_manometer": "TH2",
+                    "measuring_frequency": 10,
+                    "measuring_period": 60,
+                    "extra_measuring_period": 0
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 9,
+                  "script_command_id": "ae21dacf-1308-433b-beea-81300bbb5d56",
+                  "command_type": "Scriptcommand_51",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "c61de65d-a5fe-4213-95cc-2b24cbf294fb",
+                    "instruction": "Leckage",
+                    "digital_manometer": "TH2",
+                    "measuring_frequency": 10,
+                    "measuring_period": 120,
+                    "extra_measuring_period": 0,
+                    "leakage_amount": "-"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 5,
+        "name": "0. Instruktionen",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Funktionsschalter in Position SAV +",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "d3297b0e-5f41-4e81-b0d2-81d67620d7de",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Funktionsschalter in Position SAV +"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 6,
+        "name": "SAV",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Oberer Ansprechdruck",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "8d132dec-fbb7-46f7-9c8d-ef0687cab253",
+                  "command_type": "Scriptcommand_56",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "d8765542-a12f-4171-8822-23bc15d63fa2",
+                    "instruction": "Starthebel in Position Start halten bis SAV anspricht",
+                    "digital_manometer": "TH2",
+                    "measuring_frequency": 10,
+                    "measuring_period": 0,
+                    "extra_measuring_period": 10
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 2,
+                  "script_command_id": "ced88572-5866-4a00-8c8a-d2ec0577d697",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Zurückstellen SAV."
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 3,
+                  "script_command_id": "d62f8718-8d98-4fc0-9bda-a32122161fe4",
+                  "command_type": "Scriptcommand_56",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "dbcbdef7-657e-4028-8327-994afa6a9644",
+                    "instruction": "Starthebel in Position Start halten bis SAV anspricht",
+                    "digital_manometer": "TH2",
+                    "measuring_frequency": 10,
+                    "measuring_period": 0,
+                    "extra_measuring_period": 10
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 4,
+                  "script_command_id": "ced88572-5866-4a00-8c8a-d2ec0577d697",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Zurückstellen SAV."
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 5,
+                  "script_command_id": "3134d688-57e0-4c88-b793-3a5a4dc86227",
+                  "command_type": "Scriptcommand_56",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "cb73b85c-35cc-40a8-85fe-745776d4bd2b",
+                    "instruction": "Starthebel in Position Start halten bis SAV anspricht",
+                    "digital_manometer": "TH2",
+                    "measuring_frequency": 10,
+                    "measuring_period": 0,
+                    "extra_measuring_period": 10
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 6,
+                  "script_command_id": "05804922-6de5-47be-a489-c14e62f8813e",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "SAV nicht zurückstellen"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 7,
+        "name": "0. Instruktionen",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Funktionsschalter in Position Regelschiene =",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "fe0ddbd9-eaf9-4422-a584-3826a10b88e9",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Funktionsschalter in Position Regelschiene ="
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 8,
+        "name": "SAV",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Membrane auf Dichtheit prüfen",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "6bffe71f-bd0d-40f8-b475-77037b0f9698",
+                  "command_type": "Scriptcommand_51",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "93637c45-82a3-4274-b278-561012f19a38",
+                    "instruction": "Starthebel in Position Start halten",
+                    "digital_manometer": "TH2",
+                    "measuring_frequency": 10,
+                    "measuring_period": 30,
+                    "extra_measuring_period": 0,
+                    "leakage_amount": "Membrane"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 9,
+        "name": "Sichterheitsabsperrventil SAV",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Nullabschluß",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "0dcc4f2e-e3a5-433f-a8f4-ac73a7bc925e",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Druck auf 0 oder 10% unter Ausgangsdruck absenken"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 2,
+                  "script_command_id": "f0d74f16-493a-46ae-b37d-02e178378fc6",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Entlüftungshahn schließen"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 3,
+                  "script_command_id": "299819ec-bcf1-4a4f-8a0e-01535590ce7d",
+                  "command_type": "Scriptcommand_3",
+                  "data": {
+                    "instruction": "Warten auf Signal",
+                    "duration": 60
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 4,
+                  "script_command_id": "82a9e580-f1a1-424a-9b38-45e8d7079dd7",
+                  "command_type": "Scriptcommand_51",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "6a7bf7d5-4978-43c1-8b7c-73e5d9a6ff02",
+                    "instruction": "SAV - Nullabschluß (2 Min.)",
+                    "digital_manometer": "TH2",
+                    "measuring_frequency": 10,
+                    "measuring_period": 120,
+                    "extra_measuring_period": 0,
+                    "leakage_amount": "V1"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 5,
+                  "script_command_id": "ced88572-5866-4a00-8c8a-d2ec0577d697",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Zurückstellen SAV."
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 6,
+                  "script_command_id": "504b2960-e33a-49b4-bb56-7ad8c4ab438e",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "67fa82b6-7588-4fec-9aac-cddffb193597",
+                    "question": "Rücksprache Zentrale-Signal liegt an",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 10,
+        "name": "PLEXOR®-Prüfgerät PN100 entlüften",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "PLEXOR®-Prüfgerät PN100 entlüften",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "a8ced2ae-faef-435e-ba42-fe5174bcd9b0",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Alle Schläuche und Adapter von der Regelschiene trennen"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 2,
+                  "script_command_id": "96c294e4-fb24-40e2-8b07-54cde61e67fc",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Funktionsschalter in Position PLEXOR -"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 3,
+                  "script_command_id": "3fc9c55d-8e89-42f9-92b4-7b7645f22c1c",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Starthebel in die Position Start halten, bis die Digital Manometer keinen Überdruck mehr anzeigen"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 4,
+                  "script_command_id": "81d74500-25ca-4f68-867f-b8e2044d56a8",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Um alle Restdrücke zu entspannen, Starthebel in die Position Start halten und den Funktionsschalter in die Position Regelschiene = und wieder zurück nach PLEXOR - drehen "
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 11,
+        "name": "Abschliessende Arbeiten",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Abschliessende Arbeiten",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "a552a681-0350-4f83-9899-6dc74d82a4a6",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "f93f4568-c086-4d42-b6f2-8c31ffecf7aa",
+                    "question": "Bemerkungen zur Anlage",
+                    "type_of_question": "0; Input multi lines",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 2,
+                  "script_command_id": "2f7a6d6c-e6c5-4e54-88a9-ba2020bd99b0",
+                  "command_type": "Scriptcommand_43",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "e6bd71b8-e3f5-4e49-b153-23b4228d5184",
+                    "instruction": "Sachkundiger",
+                    "required": true,
+                    "items": [
+                      "M. Streitberg",
+                      "S. Frangenheim",
+                      "G. Abels",
+                      "L. Baum",
+                      "T. Weissmann",
+                      "U. Giesen",
+                      "M. De Rose"
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 3,
+                  "script_command_id": "5dcd6f2e-906a-4aca-aefc-eb61928312bc",
+                  "command_type": "Scriptcommand_43",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a4110136-e651-4318-a092-27a582427d99",
+                    "instruction": "Sachkundiger",
+                    "required": true,
+                    "items": [
+                      "M. Streitberg",
+                      "S. Frangenheim",
+                      "G. Abels",
+                      "L. Baum",
+                      "T. Weissmann",
+                      "U. Giesen",
+                      "M. De Rose"
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 4,
+                  "script_command_id": "18141bd5-c2a0-415a-91b4-b97f0902d91c",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Ende des Testprogramms"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Führungsschiene PN16 ND/MD (ohne Whu / mit SBV)",
+    "version": "0.1",
+    "sections": []
+  },
+  {
+    "name": "Führungsschiene PN16 HD (ohne Whu)",
+    "version": "0.1",
+    "sections": []
+  },
+  {
+    "name": "Visuelle Inspektion Übergabestation neu",
+    "version": "0.1",
+    "sections": [
+      {
+        "sequence": 1,
+        "name": "Sektion",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Visuelle Inspektion Übergabestation",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "4b2c3c76-8178-4fa6-9372-d1db91458d3e",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Willkommen"
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 2,
+                  "script_command_id": "248c8019-a758-40e5-89f7-aeac462e583e",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "9b5b6a3d-0571-4b79-9e07-6430563357d0",
+                    "question": "Allgemeiner Gebäudezustand",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 3,
+                  "script_command_id": "487cf867-a5ba-4b6f-b088-83b735c8bed6",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "e3a12fea-c8ca-458a-a623-1622ce45a106",
+                    "question": "Be- und Entlüftung in Ordnung?",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 4,
+                  "script_command_id": "6c839644-aa20-47dd-9867-1bcd5af12c31",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "940eb9c8-a797-4411-8b11-72527a3c7dad",
+                    "question": "Freie Straßenkappe",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 5,
+                  "script_command_id": "0f39c204-0c7e-457c-8368-1372470c5c1f",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "02fc16c2-5433-49e6-97ed-0483cdb01c15",
+                    "question": "Beschilderung",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 6,
+                  "script_command_id": "00ab5281-6f30-461a-b039-1bc6e168d97e",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "92216fa4-0aa5-4cba-a55a-42ab3019f20d",
+                    "question": "Absperreinrichtungen (erdverlegt) - Gängigkeit, Stellung",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 7,
+                  "script_command_id": "c3e138a2-4bb8-4f67-bf1d-3bc824bbf854",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "c08222ab-fe49-422e-a3ce-458c3b459665",
+                    "question": "Absperreinrichtungen - Dichtheit/Stopfbuchse",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 8,
+                  "script_command_id": "9cfbc552-f8c6-4d67-b9e1-3600c2db6f3d",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "d0cee513-913f-4879-ad04-774ac038c8d3",
+                    "question": "Odoranlage: Arbeitsweise",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 9,
+                  "script_command_id": "90dbde5a-fdbc-41f4-93ca-bfc13c0a4aea",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "ffa4a9b2-0824-4314-80b2-58f51787d175",
+                    "question": "Odoranlage: Odoriermittelvorrat in Liter",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 10,
+                  "script_command_id": "a35de015-5ba1-474e-90f1-9ae66f7842e7",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "b6abb079-aec6-4bc3-ad4c-b149713f03ee",
+                    "question": "Freier Zugang, Fluchtweg, Türfeststeller",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 11,
+                  "script_command_id": "34decd10-51f5-4385-bf89-49b84d6f9a29",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "263a8b6a-94b7-40ae-b012-dcd20aeae2fb",
+                    "question": "Sicherheitskennzeichnung, Hinweisschilder",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 12,
+                  "script_command_id": "b1dae6e8-f691-4fc7-9338-def19a766cb0",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "2c3ab9f6-4197-460c-869a-2e49c18a373f",
+                    "question": "Anlagenschema",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 13,
+                  "script_command_id": "96f96a34-be7b-4407-9a4f-518e6a8ddc72",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "d9a174ea-664d-40bc-81f8-beb063ce7222",
+                    "question": "Prüfplakette Feuerlöscher",
+                    "type_of_question": "2; 2 options",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 14,
+                  "script_command_id": "787bc63e-1aee-4ac2-9427-17b8dc013bd0",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "9304d044-5cb6-4660-8284-042acfc846a7",
+                    "question": "Gasgeruch",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 15,
+                  "script_command_id": "f0338d60-7b2f-42c8-886f-286dfcefedf7",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "971412dc-c4b3-4e5e-a365-15f44a6c589f",
+                    "question": "Raumatmosphäre - CH4 - Gehalt in % UEG eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 16,
+                  "script_command_id": "a564b866-e643-4ae4-933d-542e455195f2",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "7031ac9c-28c6-4a63-a78f-c6bc1f6c7bbb",
+                    "question": "Eingangsdruck - Manometer in bar/ eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 17,
+                  "script_command_id": "4ec51193-8a12-48b6-b075-278c4b6ccfcd",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "3ec0e600-471e-40c3-b7a5-8447f9c99e24",
+                    "question": "Ausgangsdruck - Manometer in /mbar eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 18,
+                  "script_command_id": "73d92a15-0976-45b6-82b5-93de74e054ba",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "f8f03554-4203-4bef-870f-24e940acb268",
+                    "question": "Gastemperatur - Thermometer/Schreiber in °C",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 19,
+                  "script_command_id": "8c35ccc8-4597-4d4a-8512-a9a3e41ee82d",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "05e60556-3e5d-41e9-b52b-0960f58c7b78",
+                    "question": "Filter - Differenzdruck in mbar eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 20,
+                  "script_command_id": "6e1f3e14-ef66-4f76-9ee2-3f6645b70262",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a6830fe8-28df-4454-baf6-60de28211434",
+                    "question": "Filter - Dichtheit Ausrüstungsteile",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 21,
+                  "script_command_id": "7f3ea2e1-07ea-451a-b181-ae6127a8a6e7",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "20fffd65-333d-408a-9fc8-72c3cff505c5",
+                    "question": "Filter - Staub- u. Kondensatanfall, Filtereinsätze in % eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 22,
+                  "script_command_id": "517639af-b97c-47fa-81d5-df840c2f31bc",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "e6272614-0e05-4a76-92cc-8675f36ec285",
+                    "question": "Austausch des Filtermaterials",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 23,
+                  "script_command_id": "a49bd78c-1d8a-4451-a1b6-348243dab2d3",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "c7af19b8-4fd1-4d88-895a-807f2af1d826",
+                    "question": "Dichtheit (Bauelemente und Baugruppen)",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 24,
+                  "script_command_id": "08d4f123-4f41-4fcb-80b8-c228c5da4f62",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "acfe3e7f-92a7-4a69-84af-4fa757487e02",
+                    "question": "Korrision / Anstrich Baugruppen",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 25,
+                  "script_command_id": "6fb1e22b-ffed-4c2f-97d4-087f7d14939b",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "865aae89-ec12-454c-b45c-4ba234f0c66b",
+                    "question": "Sauberkeit Fußboden",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 26,
+                  "script_command_id": "7f1649bb-407b-4f02-8d0f-22013f1cb8c3",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "6bf2c2bc-e525-4a3d-a130-25aa2de7aafb",
+                    "question": "Druck im Heizkreislauf geprüft Eingabe in bar",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 27,
+                  "script_command_id": "d5adc2f8-9eb9-4479-8d0b-de1cc8507b6b",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a9b5e29b-c60f-4a16-9a10-c9c6f1e884ec",
+                    "question": "Frostschutz",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 28,
+                  "script_command_id": "41eb15a3-42fe-4dd2-9bae-39197198d87a",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "e5ca0a6e-a739-4cf5-baf3-19b1a246ce0c",
+                    "question": "Abdichtungen zu Nebenräumen",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 29,
+                  "script_command_id": "316cf134-65b2-4dcf-9183-91c32b9f926f",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "2e04bda3-5e9a-4c9c-b421-505cbfffed23",
+                    "question": "Wasser SAV: Dichter Abschluss",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 30,
+                  "script_command_id": "43ada4ee-1f04-45de-b1bf-d86ba93a9fc0",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "3d563cd5-5e2c-4630-b4e8-a35b56910a13",
+                    "question": "Einstellungen Wärmeerzeuger in °C eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 31,
+                  "script_command_id": "8d880ef0-a555-41f8-a355-75f54c81d49a",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "35b09452-30aa-4f22-8e08-3b48ce08bda7",
+                    "question": "Arbeitsweise, Vorwärmung min/max in °C eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 32,
+                  "script_command_id": "a9071820-a7bb-4852-80f7-0ac117e4b2ff",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "ee4dd737-eafe-4b26-b07c-07de99dcc8b8",
+                    "question": "Heizgasschiene",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 2,
+        "name": "Inspektionsbericht",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Messanlage",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "36461898-5bf0-48f1-8f9f-86e40d905e30",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "4ee24d30-d753-4dbd-a259-0e1d8deb666e",
+                    "question": "Zählerfortlauf in Ordnung?",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 2,
+                  "script_command_id": "79f252b7-3db7-45f1-8e63-110fc88f6ee4",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "6fd5663d-8ac9-42ab-839f-0ea2135e92e8",
+                    "question": "Betriebsgeräuch",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 3,
+                  "script_command_id": "6966d8a9-1f3a-484a-ba58-230cf34c7d1d",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "69187ebd-cb3a-4162-abdc-f3e3022dec17",
+                    "question": "Zählerstand eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 4,
+                  "script_command_id": "0a69de25-663f-4682-ad99-897e5d429d3c",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "5915d50c-bf23-4a45-87c9-b71f186ca11c",
+                    "question": "Belastung des Zählers in m3/h",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 5,
+                  "script_command_id": "5bd6fee2-4cfc-49a7-8a74-40ef62364bb0",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "eabb3e90-e6b9-4f64-86d3-b4c9b35bdae5",
+                    "question": "Zählertyp eingeben:",
+                    "type_of_question": "0; Input multi lines",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 6,
+                  "script_command_id": "f0338d60-7b2f-42c8-886f-286dfcefedf7",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "971412dc-c4b3-4e5e-a365-15f44a6c589f",
+                    "question": "Raumatmosphäre - CH4 - Gehalt in % UEG eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 7,
+                  "script_command_id": "a35de015-5ba1-474e-90f1-9ae66f7842e7",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "b6abb079-aec6-4bc3-ad4c-b149713f03ee",
+                    "question": "Freier Zugang, Fluchtweg, Türfeststeller",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 8,
+                  "script_command_id": "6c839644-aa20-47dd-9867-1bcd5af12c31",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "940eb9c8-a797-4411-8b11-72527a3c7dad",
+                    "question": "Freie Straßenkappe",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 9,
+                  "script_command_id": "0f39c204-0c7e-457c-8368-1372470c5c1f",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "02fc16c2-5433-49e6-97ed-0483cdb01c15",
+                    "question": "Beschilderung",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 10,
+                  "script_command_id": "00ab5281-6f30-461a-b039-1bc6e168d97e",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "92216fa4-0aa5-4cba-a55a-42ab3019f20d",
+                    "question": "Absperreinrichtungen (erdverlegt) - Gängigkeit, Stellung",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 11,
+                  "script_command_id": "c3e138a2-4bb8-4f67-bf1d-3bc824bbf854",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "c08222ab-fe49-422e-a3ce-458c3b459665",
+                    "question": "Absperreinrichtungen - Dichtheit/Stopfbuchse",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 12,
+                  "script_command_id": "a564b866-e643-4ae4-933d-542e455195f2",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "7031ac9c-28c6-4a63-a78f-c6bc1f6c7bbb",
+                    "question": "Eingangsdruck - Manometer in bar/ eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 13,
+                  "script_command_id": "4ec51193-8a12-48b6-b075-278c4b6ccfcd",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "3ec0e600-471e-40c3-b7a5-8447f9c99e24",
+                    "question": "Ausgangsdruck - Manometer in /mbar eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 14,
+                  "script_command_id": "8c35ccc8-4597-4d4a-8512-a9a3e41ee82d",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "05e60556-3e5d-41e9-b52b-0960f58c7b78",
+                    "question": "Filter - Differenzdruck in mbar eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 15,
+                  "script_command_id": "6e1f3e14-ef66-4f76-9ee2-3f6645b70262",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a6830fe8-28df-4454-baf6-60de28211434",
+                    "question": "Filter - Dichtheit Ausrüstungsteile",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 16,
+                  "script_command_id": "7f3ea2e1-07ea-451a-b181-ae6127a8a6e7",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "20fffd65-333d-408a-9fc8-72c3cff505c5",
+                    "question": "Filter - Staub- u. Kondensatanfall, Filtereinsätze in % eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 17,
+                  "script_command_id": "64e8838a-a7ac-4ce2-8963-bb08db710666",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "b5cee016-f7b7-48e5-8cce-571d68a76c2f",
+                    "question": "SAV - Stellung und Stellungsanzeige",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Auf",
+                    "option_2": "Zu",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 18,
+                  "script_command_id": "fc9f7161-3c1c-40ed-9487-2d835fe035b3",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "b7089b2c-50b4-4c8a-bad2-fd78d59a08f6",
+                    "question": "Druckregelgerät - Arbeitsweise",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 19,
+                  "script_command_id": "b6a95dcf-bafe-49cc-adba-9dcaf5b03380",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a078eb69-7ee2-4e72-ab50-ea10392d5e77",
+                    "question": "Absperreinrichtungen - Stellung/Kennzeichnung",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 20,
+                  "script_command_id": "d2336452-b34a-43ed-a826-802eeef97be0",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "03a8f442-3c7b-4b8e-bf55-de97391869a5",
+                    "question": "Absperreinrichtungen - Gängigkeit",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 21,
+                  "script_command_id": "0aae96a0-8ee0-45ab-afcf-554b94cade0f",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "db316db5-bf40-4eb2-92f7-5270068f65e6",
+                    "question": "Absperreinrichtungen - Innere Dichtheit",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 22,
+                  "script_command_id": "de0d827d-137e-4d4b-9f25-a2cc30e36f9d",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "f61ee0bc-62b3-44e4-a487-69e0b80929ee",
+                    "question": "Rohrleitungen - Beschädigungen",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 23,
+                  "script_command_id": "ba68c3fb-368b-43b6-91fc-e227b7a5a567",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a586c135-2a89-4615-996c-b92a2f44c420",
+                    "question": "Rohrleitungen - Dichtheit (lösbare Verbindungen)",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 24,
+                  "script_command_id": "39247851-1dd0-4f79-b1d5-6cb02cca5282",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "129754f1-fcdc-46c8-8f1d-e23dd81f1423",
+                    "question": "Rohrleitungen - Freier Querschnitt Ausblaseleitungen",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 25,
+                  "script_command_id": "166fd5f1-14fb-4105-b453-3dcb5185c84e",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "df6e5ad7-8835-4be2-98b6-dd6bc236f908",
+                    "question": "Rohrleitungen - Halterungen",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 26,
+                  "script_command_id": "2da620c3-0aca-4b4a-ba37-dd24b3e7365d",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "9b3c4821-d563-4960-bb35-fc9591e33c4b",
+                    "question": "Fernübertragung - Signalüberprüfung",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 27,
+                  "script_command_id": "e7c7ddc1-b02a-4356-9a6f-38ae3e1587d8",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a99a9e78-d4f5-458e-85ed-52db50d721e8",
+                    "question": "Fernübertragung - Störwertmeldung",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 28,
+                  "script_command_id": "99a6bef1-badf-474b-babd-d0bd6807206f",
+                  "command_type": "Scriptcommand_43",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "907ee961-c9e0-4012-9cbf-b1d44f50f5fd",
+                    "instruction": "Sachkundiger 1",
+                    "required": false,
+                    "items": [
+                      "M. Streitberg",
+                      "S. Frangenheim",
+                      "G. Abels",
+                      "L. Baum",
+                      "T. Weissmann",
+                      "U. Giesen",
+                      "M. De Rose"
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 29,
+                  "script_command_id": "63840e1a-58c6-4019-abf1-e012094606a9",
+                  "command_type": "Scriptcommand_43",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "8d428e5f-b99a-4b5c-a2dd-b293cbf2fc3d",
+                    "instruction": " Sachkundiger 2",
+                    "required": false,
+                    "items": [
+                      "M. Streitberg",
+                      "S. Frangenheim",
+                      "G. Abels",
+                      "L. Baum",
+                      "T. Weissmann",
+                      "U. Giesen",
+                      "M. De Rose"
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 30,
+                  "script_command_id": "a552a681-0350-4f83-9899-6dc74d82a4a6",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "f93f4568-c086-4d42-b6f2-8c31ffecf7aa",
+                    "question": "Bemerkungen zur Anlage",
+                    "type_of_question": "0; Input multi lines",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Visuelle Inspektion Übergabestation",
+    "version": "0.1",
+    "sections": []
+  },
+  {
+    "name": "Visuelle Inspektion BZ-Schrankanlage",
+    "version": "0.1",
+    "sections": [
+      {
+        "sequence": 1,
+        "name": "Sektion",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Willkommen",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "4b2c3c76-8178-4fa6-9372-d1db91458d3e",
+                  "command_type": "Scriptcommand_1",
+                  "data": {
+                    "instruction": "Willkommen"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 2,
+        "name": "Inspektionsbericht Schrankanlage",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Schrank",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "248c8019-a758-40e5-89f7-aeac462e583e",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "9b5b6a3d-0571-4b79-9e07-6430563357d0",
+                    "question": "Allgemeiner Gebäudezustand",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 2,
+                  "script_command_id": "487cf867-a5ba-4b6f-b088-83b735c8bed6",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "e3a12fea-c8ca-458a-a623-1622ce45a106",
+                    "question": "Be- und Entlüftung in Ordnung?",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 3,
+                  "script_command_id": "787bc63e-1aee-4ac2-9427-17b8dc013bd0",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "9304d044-5cb6-4660-8284-042acfc846a7",
+                    "question": "Gasgeruch",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 4,
+                  "script_command_id": "a49bd78c-1d8a-4451-a1b6-348243dab2d3",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "c7af19b8-4fd1-4d88-895a-807f2af1d826",
+                    "question": "Dichtheit (Bauelemente und Baugruppen)",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 5,
+                  "script_command_id": "a3671f22-6698-409e-bf36-f24f232e9098",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "acfe3e7f-92a7-4a69-84af-4fa757487e02",
+                    "question": "Korrisionserscheinung",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 6,
+                  "script_command_id": "427c6f90-0a6b-4850-bcac-3e8bfa9c4877",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "fc98c939-7073-4866-901b-fe8f1140214e",
+                    "question": "Anstrich ausgebessert",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 7,
+                  "script_command_id": "6efa45f7-9aaf-4c85-8ea5-f82809be4f0b",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "865aae89-ec12-454c-b45c-4ba234f0c66b",
+                    "question": "Anlage gesäubert",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 8,
+                  "script_command_id": "517639af-b97c-47fa-81d5-df840c2f31bc",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "e6272614-0e05-4a76-92cc-8675f36ec285",
+                    "question": "Austausch des Filtermaterials",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 9,
+                  "script_command_id": "16069232-38a6-483e-ad9a-c02f4fbde534",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "eb4690ef-17dc-4f40-914c-6ea8ac62f163",
+                    "question": "Staubanfall in %",
+                    "type_of_question": "0; Input multi lines",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "sequence": 3,
+        "name": "Inspektionsbericht",
+        "sub_sections": [
+          {
+            "sequence": 1,
+            "name": "Messanlage",
+            "command_type": "Scriptcommand_2",
+            "script_commands": [
+              [
+                {
+                  "sequence": 1,
+                  "script_command_id": "36461898-5bf0-48f1-8f9f-86e40d905e30",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "4ee24d30-d753-4dbd-a259-0e1d8deb666e",
+                    "question": "Zählerfortlauf in Ordnung?",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 2,
+                  "script_command_id": "79f252b7-3db7-45f1-8e63-110fc88f6ee4",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "6fd5663d-8ac9-42ab-839f-0ea2135e92e8",
+                    "question": "Betriebsgeräuch",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 3,
+                  "script_command_id": "6966d8a9-1f3a-484a-ba58-230cf34c7d1d",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "69187ebd-cb3a-4162-abdc-f3e3022dec17",
+                    "question": "Zählerstand eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 4,
+                  "script_command_id": "0a69de25-663f-4682-ad99-897e5d429d3c",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "5915d50c-bf23-4a45-87c9-b71f186ca11c",
+                    "question": "Belastung des Zählers in m3/h",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 5,
+                  "script_command_id": "5bd6fee2-4cfc-49a7-8a74-40ef62364bb0",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "eabb3e90-e6b9-4f64-86d3-b4c9b35bdae5",
+                    "question": "Zählertyp eingeben:",
+                    "type_of_question": "0; Input multi lines",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 6,
+                  "script_command_id": "f0338d60-7b2f-42c8-886f-286dfcefedf7",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "971412dc-c4b3-4e5e-a365-15f44a6c589f",
+                    "question": "Raumatmosphäre - CH4 - Gehalt in % UEG eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 7,
+                  "script_command_id": "a35de015-5ba1-474e-90f1-9ae66f7842e7",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "b6abb079-aec6-4bc3-ad4c-b149713f03ee",
+                    "question": "Freier Zugang, Fluchtweg, Türfeststeller",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 8,
+                  "script_command_id": "6c839644-aa20-47dd-9867-1bcd5af12c31",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "940eb9c8-a797-4411-8b11-72527a3c7dad",
+                    "question": "Freie Straßenkappe",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 9,
+                  "script_command_id": "0f39c204-0c7e-457c-8368-1372470c5c1f",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "02fc16c2-5433-49e6-97ed-0483cdb01c15",
+                    "question": "Beschilderung",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 10,
+                  "script_command_id": "00ab5281-6f30-461a-b039-1bc6e168d97e",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "92216fa4-0aa5-4cba-a55a-42ab3019f20d",
+                    "question": "Absperreinrichtungen (erdverlegt) - Gängigkeit, Stellung",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 11,
+                  "script_command_id": "c3e138a2-4bb8-4f67-bf1d-3bc824bbf854",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "c08222ab-fe49-422e-a3ce-458c3b459665",
+                    "question": "Absperreinrichtungen - Dichtheit/Stopfbuchse",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 12,
+                  "script_command_id": "a564b866-e643-4ae4-933d-542e455195f2",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "7031ac9c-28c6-4a63-a78f-c6bc1f6c7bbb",
+                    "question": "Eingangsdruck - Manometer in bar/ eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 13,
+                  "script_command_id": "4ec51193-8a12-48b6-b075-278c4b6ccfcd",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "3ec0e600-471e-40c3-b7a5-8447f9c99e24",
+                    "question": "Ausgangsdruck - Manometer in /mbar eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 14,
+                  "script_command_id": "8c35ccc8-4597-4d4a-8512-a9a3e41ee82d",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "05e60556-3e5d-41e9-b52b-0960f58c7b78",
+                    "question": "Filter - Differenzdruck in mbar eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 15,
+                  "script_command_id": "6e1f3e14-ef66-4f76-9ee2-3f6645b70262",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a6830fe8-28df-4454-baf6-60de28211434",
+                    "question": "Filter - Dichtheit Ausrüstungsteile",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 16,
+                  "script_command_id": "7f3ea2e1-07ea-451a-b181-ae6127a8a6e7",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "20fffd65-333d-408a-9fc8-72c3cff505c5",
+                    "question": "Filter - Staub- u. Kondensatanfall, Filtereinsätze in % eingeben",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 17,
+                  "script_command_id": "64e8838a-a7ac-4ce2-8963-bb08db710666",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "b5cee016-f7b7-48e5-8cce-571d68a76c2f",
+                    "question": "SAV - Stellung und Stellungsanzeige",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Auf",
+                    "option_2": "Zu",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 18,
+                  "script_command_id": "fc9f7161-3c1c-40ed-9487-2d835fe035b3",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "b7089b2c-50b4-4c8a-bad2-fd78d59a08f6",
+                    "question": "Druckregelgerät - Arbeitsweise",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 19,
+                  "script_command_id": "b6a95dcf-bafe-49cc-adba-9dcaf5b03380",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a078eb69-7ee2-4e72-ab50-ea10392d5e77",
+                    "question": "Absperreinrichtungen - Stellung/Kennzeichnung",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 20,
+                  "script_command_id": "d2336452-b34a-43ed-a826-802eeef97be0",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "03a8f442-3c7b-4b8e-bf55-de97391869a5",
+                    "question": "Absperreinrichtungen - Gängigkeit",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 21,
+                  "script_command_id": "0aae96a0-8ee0-45ab-afcf-554b94cade0f",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "db316db5-bf40-4eb2-92f7-5270068f65e6",
+                    "question": "Absperreinrichtungen - Innere Dichtheit",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 22,
+                  "script_command_id": "de0d827d-137e-4d4b-9f25-a2cc30e36f9d",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "f61ee0bc-62b3-44e4-a487-69e0b80929ee",
+                    "question": "Rohrleitungen - Beschädigungen",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "Ja",
+                    "option_2": "Nein",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 23,
+                  "script_command_id": "ba68c3fb-368b-43b6-91fc-e227b7a5a567",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a586c135-2a89-4615-996c-b92a2f44c420",
+                    "question": "Rohrleitungen - Dichtheit (lösbare Verbindungen)",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 24,
+                  "script_command_id": "39247851-1dd0-4f79-b1d5-6cb02cca5282",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "129754f1-fcdc-46c8-8f1d-e23dd81f1423",
+                    "question": "Rohrleitungen - Freier Querschnitt Ausblaseleitungen",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 25,
+                  "script_command_id": "166fd5f1-14fb-4105-b453-3dcb5185c84e",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "df6e5ad7-8835-4be2-98b6-dd6bc236f908",
+                    "question": "Rohrleitungen - Halterungen",
+                    "type_of_question": "2; 2 options",
+                    "option_1": "OK",
+                    "option_2": "Nicht OK",
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 26,
+                  "script_command_id": "2da620c3-0aca-4b4a-ba37-dd24b3e7365d",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "9b3c4821-d563-4960-bb35-fc9591e33c4b",
+                    "question": "Fernübertragung - Signalüberprüfung",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 27,
+                  "script_command_id": "e7c7ddc1-b02a-4356-9a6f-38ae3e1587d8",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "a99a9e78-d4f5-458e-85ed-52db50d721e8",
+                    "question": "Fernübertragung - Störwertmeldung",
+                    "type_of_question": "1; Input single line",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 28,
+                  "script_command_id": "99a6bef1-badf-474b-babd-d0bd6807206f",
+                  "command_type": "Scriptcommand_43",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "907ee961-c9e0-4012-9cbf-b1d44f50f5fd",
+                    "instruction": "Sachkundiger 1",
+                    "required": false,
+                    "items": [
+                      "M. Streitberg",
+                      "S. Frangenheim",
+                      "G. Abels",
+                      "L. Baum",
+                      "T. Weissmann",
+                      "U. Giesen",
+                      "M. De Rose"
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 29,
+                  "script_command_id": "63840e1a-58c6-4019-abf1-e012094606a9",
+                  "command_type": "Scriptcommand_43",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "8d428e5f-b99a-4b5c-a2dd-b293cbf2fc3d",
+                    "instruction": " Sachkundiger 2",
+                    "required": false,
+                    "items": [
+                      "M. Streitberg",
+                      "S. Frangenheim",
+                      "G. Abels",
+                      "L. Baum",
+                      "T. Weissmann",
+                      "U. Giesen",
+                      "M. De Rose"
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "sequence": 30,
+                  "script_command_id": "a552a681-0350-4f83-9899-6dc74d82a4a6",
+                  "command_type": "Scriptcommand_4",
+                  "data": {
+                    "object_name": null,
+                    "measure_point": null,
+                    "inspection_point_id": "f93f4568-c086-4d42-b6f2-8c31ffecf7aa",
+                    "question": "Bemerkungen zur Anlage",
+                    "type_of_question": "0; Input multi lines",
+                    "option_1": null,
+                    "option_2": null,
+                    "option_3": null,
+                    "required": true
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

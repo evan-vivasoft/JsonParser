@@ -1,0 +1,378 @@
+[
+  {
+    "id": "d3aec2db-8a22-45a1-ba24-2fd897405046",
+    "name": "Adenauerpark",
+    "identification_code": "2018",
+    "information": "Bezirksregelanlage",
+    "database_code": "Adenauerpark",
+    "route": null,
+    "inspection_procedure": {
+      "id": "49763f06-c649-4d42-afcb-bbbdb40081ef",
+      "name": "Visuelle Inspektion BZ-Schrankanlage",
+      "version": "0.1"
+    },
+    "gas_control_lines": [
+      {
+        "id": "d5b43a9f-e005-4afa-9bc4-8190739daf95",
+        "name": "Arbeitsschiene",
+        "identification_code": "Ad-AS",
+        "psd_volume": "5.08dm3",
+        "ssd_volume": "5.08dm3",
+        "pe_min": "3.3bar",
+        "pe_max": "3.7bar",
+        "pd_range": "0..2000 mbar",
+        "pu_range": "0..35 bar",
+        "gcl_number": 1,
+        "start_position": null,
+        "inspection_procedure": {
+          "id": "c117bbc8-b112-447a-8c66-b6c4b431834d",
+          "name": "Führungsschiene PN16 ND/MD (ohne Whu / ohne SBV)"
+        },
+        "boundaries": [
+          {
+            "script_command_id": "6dad0111-d549-48f7-a913-7d6933de5738",
+            "minimum_value": 21.6,
+            "maximum_value": 26.4,
+            "uom": "mbar",
+            "offset": 3,
+            "inspection_point_id": "624adaa5-13fb-40d0-9a4a-54cadb6446ed",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "34dfdcc7-65fc-4a52-afac-32154836ed9a",
+            "minimum_value": 22.5,
+            "maximum_value": 27.5,
+            "uom": "mbar",
+            "offset": 0,
+            "inspection_point_id": "f0099bad-1236-45a4-9a48-58035c69bd49",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "7b31c9a5-b00b-4b6d-b321-059184f6f9ae",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": "mbar",
+            "offset": 0,
+            "inspection_point_id": "8b23c3fc-73ce-4dca-b33e-ecbc9f146203",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "e338a465-94d3-4042-8053-47fe39971901",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": "mbar",
+            "offset": 0,
+            "inspection_point_id": "8979c5c5-7bd0-4cf2-ab6d-33c7be08f74e",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "ae21dacf-1308-433b-beea-81300bbb5d56",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": "mbar/min",
+            "offset": 0,
+            "inspection_point_id": "c61de65d-a5fe-4213-95cc-2b24cbf294fb",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "8d132dec-fbb7-46f7-9c8d-ef0687cab253",
+            "minimum_value": 45,
+            "maximum_value": 55,
+            "uom": "mbar",
+            "offset": 5,
+            "inspection_point_id": "d8765542-a12f-4171-8822-23bc15d63fa2",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "d62f8718-8d98-4fc0-9bda-a32122161fe4",
+            "minimum_value": 45,
+            "maximum_value": 55,
+            "uom": "mbar",
+            "offset": 0,
+            "inspection_point_id": "dbcbdef7-657e-4028-8327-994afa6a9644",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "3134d688-57e0-4c88-b793-3a5a4dc86227",
+            "minimum_value": 45,
+            "maximum_value": 55,
+            "uom": "mbar",
+            "offset": 0,
+            "inspection_point_id": "cb73b85c-35cc-40a8-85fe-745776d4bd2b",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "6bffe71f-bd0d-40f8-b475-77037b0f9698",
+            "minimum_value": -0.5,
+            "maximum_value": 3,
+            "uom": "mbar/min",
+            "offset": 0,
+            "inspection_point_id": "93637c45-82a3-4274-b278-561012f19a38",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "82a9e580-f1a1-424a-9b38-45e8d7079dd7",
+            "minimum_value": -0.5,
+            "maximum_value": 3,
+            "uom": "mbar/min",
+            "offset": 0,
+            "inspection_point_id": "6a7bf7d5-4978-43c1-8b7c-73e5d9a6ff02",
+            "object_id": null,
+            "measure_point_id": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "020c900f-5fde-4350-88c7-395c65f8e784",
+    "name": "Alte Jülicherstr.",
+    "identification_code": "2036",
+    "information": "Bezirksregelanlage",
+    "database_code": "2036",
+    "route": null,
+    "inspection_procedure": {
+      "id": "49763f06-c649-4d42-afcb-bbbdb40081ef",
+      "name": "Visuelle Inspektion BZ-Schrankanlage",
+      "version": "0.1"
+    },
+    "gas_control_lines": []
+  },
+  {
+    "id": "0ab05821-b7d9-4979-b44d-8a3d996da0df",
+    "name": "An den Stadtwerken",
+    "identification_code": "2027",
+    "information": "Bezirksregelanlage",
+    "database_code": "2027",
+    "route": null,
+    "inspection_procedure": {
+      "id": "49763f06-c649-4d42-afcb-bbbdb40081ef",
+      "name": "Visuelle Inspektion BZ-Schrankanlage",
+      "version": "0.1"
+    },
+    "gas_control_lines": []
+  },
+  {
+    "id": "41144603-53b3-4bd5-a74f-7ba97d820637",
+    "name": "Birkesdorf",
+    "identification_code": "G-1",
+    "information": "Can be empty.",
+    "database_code": "G-1",
+    "route": {
+      "id": "84b66be7-9dc8-496b-bf96-20682313d9eb",
+      "name": "Birkesdorf"
+    },
+    "inspection_procedure": {
+      "id": "4d4b39ce-41af-45cd-9047-88bb93342675",
+      "name": "Visuelle Inspektion Übergabestation neu",
+      "version": "0.1"
+    },
+    "gas_control_lines": [
+      {
+        "id": "22f47922-534f-4021-a0d0-15a010ba72d6",
+        "name": "Betriebsschiene",
+        "identification_code": "G-1GCL00001",
+        "psd_volume": null,
+        "ssd_volume": null,
+        "pe_min": null,
+        "pe_max": null,
+        "pd_range": "0..2000 mbar",
+        "pu_range": "0..90 bar",
+        "gcl_number": 2,
+        "start_position": null,
+        "inspection_procedure": null,
+        "boundaries": []
+      }
+    ]
+  },
+  {
+    "id": "1871eac2-e68d-482b-8c1c-fa72c7c20ac5",
+    "name": "Düren-1",
+    "identification_code": "PRS000004",
+    "information": "",
+    "database_code": "",
+    "route": null,
+    "inspection_procedure": null,
+    "gas_control_lines": [
+      {
+        "id": "e3063eda-f72e-4753-b0f7-1b2327d328b5",
+        "name": "Test GCL",
+        "identification_code": "PRS000004GCL00001",
+        "psd_volume": "345.0dm3",
+        "ssd_volume": "64.0dm3",
+        "pe_min": "23.0bar",
+        "pe_max": "44.0bar",
+        "pd_range": "0..70 mbar",
+        "pu_range": "0..200 mbar",
+        "gcl_number": 1,
+        "start_position": null,
+        "inspection_procedure": null,
+        "boundaries": []
+      }
+    ]
+  },
+  {
+    "id": "e6cdb29e-b685-4e57-a84f-17205888242a",
+    "name": "Niederau",
+    "identification_code": "G-5",
+    "information": "It is not a problem that this field is empty.",
+    "database_code": "G-5",
+    "route": {
+      "id": "832672a5-6d1c-4d7f-a6c6-0904c2b3f647",
+      "name": "Düren"
+    },
+    "inspection_procedure": {
+      "id": "4d4b39ce-41af-45cd-9047-88bb93342675",
+      "name": "Visuelle Inspektion Übergabestation neu",
+      "version": "0.1"
+    },
+    "gas_control_lines": [
+      {
+        "id": "dcfd10e2-ec0f-430b-80cd-2c8b7c830ba2",
+        "name": "Reserveschiene",
+        "identification_code": "Nie-RS",
+        "psd_volume": "97.63dm3",
+        "ssd_volume": "97.63dm3",
+        "pe_min": "22.0bar",
+        "pe_max": "22.0bar",
+        "pd_range": "0..35 bar",
+        "pu_range": "0..35 bar",
+        "gcl_number": 1,
+        "start_position": null,
+        "inspection_procedure": {
+          "id": "10d2685e-1c1c-4b6f-928c-c9e601a5d88f",
+          "name": "Reserveschiene PN25 (ohne Whu)"
+        },
+        "boundaries": []
+      },
+      {
+        "id": "55c0fda2-d2b9-40c6-8121-888af35bb281",
+        "name": "Arbeitsschiene",
+        "identification_code": "Nie-AS",
+        "psd_volume": "97.63dm3",
+        "ssd_volume": "97.63dm3",
+        "pe_min": "22.0bar",
+        "pe_max": "22.0bar",
+        "pd_range": "0..35 bar",
+        "pu_range": "0..35 bar",
+        "gcl_number": 2,
+        "start_position": null,
+        "inspection_procedure": {
+          "id": "c117bbc8-b112-447a-8c66-b6c4b431834d",
+          "name": "Führungsschiene PN16 ND/MD (ohne Whu / ohne SBV)"
+        },
+        "boundaries": [
+          {
+            "script_command_id": "6dad0111-d549-48f7-a913-7d6933de5738",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": null,
+            "offset": 3,
+            "inspection_point_id": "624adaa5-13fb-40d0-9a4a-54cadb6446ed",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "34dfdcc7-65fc-4a52-afac-32154836ed9a",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": null,
+            "offset": 0,
+            "inspection_point_id": "f0099bad-1236-45a4-9a48-58035c69bd49",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "7b31c9a5-b00b-4b6d-b321-059184f6f9ae",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": null,
+            "offset": 0,
+            "inspection_point_id": "8b23c3fc-73ce-4dca-b33e-ecbc9f146203",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "e338a465-94d3-4042-8053-47fe39971901",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": null,
+            "offset": 0,
+            "inspection_point_id": "8979c5c5-7bd0-4cf2-ab6d-33c7be08f74e",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "ae21dacf-1308-433b-beea-81300bbb5d56",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": null,
+            "offset": 0,
+            "inspection_point_id": "c61de65d-a5fe-4213-95cc-2b24cbf294fb",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "8d132dec-fbb7-46f7-9c8d-ef0687cab253",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": null,
+            "offset": 5,
+            "inspection_point_id": "d8765542-a12f-4171-8822-23bc15d63fa2",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "d62f8718-8d98-4fc0-9bda-a32122161fe4",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": null,
+            "offset": 0,
+            "inspection_point_id": "dbcbdef7-657e-4028-8327-994afa6a9644",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "3134d688-57e0-4c88-b793-3a5a4dc86227",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": null,
+            "offset": 0,
+            "inspection_point_id": "cb73b85c-35cc-40a8-85fe-745776d4bd2b",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "6bffe71f-bd0d-40f8-b475-77037b0f9698",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": null,
+            "offset": 0,
+            "inspection_point_id": "93637c45-82a3-4274-b278-561012f19a38",
+            "object_id": null,
+            "measure_point_id": null
+          },
+          {
+            "script_command_id": "82a9e580-f1a1-424a-9b38-45e8d7079dd7",
+            "minimum_value": null,
+            "maximum_value": null,
+            "uom": null,
+            "offset": 0,
+            "inspection_point_id": "6a7bf7d5-4978-43c1-8b7c-73e5d9a6ff02",
+            "object_id": null,
+            "measure_point_id": null
+          }
+        ]
+      }
+    ]
+  }
+]
