@@ -1,21 +1,15 @@
-﻿using Autofac;
-using JSONParser.InformationService;
-using JSONParser.RequestHandler;
+﻿using JSONParser.InformationService;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Xunit.Sdk;
 
 namespace JSONParser.LicenseHelper
 {
@@ -245,11 +239,14 @@ namespace JSONParser.LicenseHelper
         {
             try
             {
-                Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("LicenseInfo"), EncryptLicensesInfo());
-                //Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("InspectorPCBaseUrl"), BaseUrl);
-                //Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("InspectorPCCustomerId"), CustomerId);
-                //Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("InspectorPCDeviceId"), this._deviceId);
-                //Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("InspectorPCApiToken"), this._apiToken);
+                if (Environment.Is64BitOperatingSystem)
+                {
+                    Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath64Bit"), ConfigurationManager.AppSettings.Get("LicenseInfo"), EncryptLicensesInfo());
+                }
+                else
+                {
+                    Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("LicenseInfo"), EncryptLicensesInfo());
+                }
             }
             catch (Exception ex)
             {
@@ -257,11 +254,9 @@ namespace JSONParser.LicenseHelper
             }
         }
 
-        private string EncryptLicensesInfo(LicenseInfo tmp = null)
+        private string EncryptLicensesInfo()
         {
-            LicenseInfo licenseInfo = 
-                tmp ??
-                new LicenseInfo()
+            LicenseInfo licenseInfo = new LicenseInfo()
             {
                 InspectorPCBaseUrl = BaseUrl,
                 InspectorPCCustomerId = CustomerId.ToString(),
@@ -337,7 +332,10 @@ namespace JSONParser.LicenseHelper
 
         public LicenseInfo GetLicenseInfo()
         {
-            var licenseCipher = Registry.GetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("LicenseInfo"), null) as string;
+            var licenseCipher = 
+                Environment.Is64BitOperatingSystem
+                    ? Registry.GetValue(ConfigurationManager.AppSettings.Get("RegistryPath64Bit"), ConfigurationManager.AppSettings.Get("LicenseInfo"), null) as string
+                    : Registry.GetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("LicenseInfo"), null) as string;
 
             if (licenseCipher == null)
             {
