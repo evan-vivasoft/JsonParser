@@ -23,6 +23,8 @@ namespace JSONParser.LicenseHelper
         private string _deviceId;
         private Dictionary<string, string> _reqHeaderWithToken = new Dictionary<string, string>();
         private HttpClient _httpClient = new HttpClient();
+        private string _licenseStatus;
+        private DateTime _licenseExpiryDate;
         #endregion
         
         #region Getters
@@ -63,6 +65,14 @@ namespace JSONParser.LicenseHelper
             get
             {
                 return BaseUrl.TrimEnd('/') + ":8000/" + VerificationUrl.TrimStart('/');
+            }
+        }
+
+        private string EncryptionKey
+        {
+            get
+            {
+                return "YWJjZGVmZ2hpa3p7eW91cnN0c3RyaW5nLm9wZW5jb21wbGV4IFtdeQ==";
             }
         }
         #endregion
@@ -182,7 +192,7 @@ namespace JSONParser.LicenseHelper
                 Array.Copy(cipherBytes, 0, salt, 0, salt.Length);
 
                 // Derive the key and IV from the password and salt
-                var key = new Rfc2898DeriveBytes(ConfigurationManager.AppSettings.Get("EncryptionKey"), salt, 10000);
+                var key = new Rfc2898DeriveBytes(EncryptionKey, salt, 10000);
                 byte[] keyBytes = key.GetBytes(32);
                 byte[] ivBytes = key.GetBytes(16);
 
@@ -261,7 +271,9 @@ namespace JSONParser.LicenseHelper
                 InspectorPCBaseUrl = BaseUrl,
                 InspectorPCCustomerId = CustomerId.ToString(),
                 InspectorPCDeviceId = this._deviceId.ToString(),
-                InspectorPCApiToken = this._apiToken
+                InspectorPCApiToken = this._apiToken,
+                LicenseStatus = _licenseStatus,
+                LicenseExpiryDate = _licenseExpiryDate
             };
 
             byte[] salt = new byte[16];
@@ -271,7 +283,7 @@ namespace JSONParser.LicenseHelper
             }
 
             // Derive a key and IV from the password and salt
-            var key = new Rfc2898DeriveBytes(ConfigurationManager.AppSettings.Get("EncryptionKey"), salt, 10000);
+            var key = new Rfc2898DeriveBytes(EncryptionKey, salt, 10000);
             byte[] keyBytes = key.GetBytes(32);
             byte[] ivBytes = key.GetBytes(16);
 
@@ -317,6 +329,9 @@ namespace JSONParser.LicenseHelper
                 DeviceStatus deviceStatus = await GetDeviceStatus();
                 var licenseExpiredIn = (deviceStatus.license_expiry_date - DateTime.Now).Days;
                 licenseExpiredIn = licenseExpiredIn < 0 ? 0 : licenseExpiredIn;
+                _licenseExpiryDate = deviceStatus.license_expiry_date;
+                _licenseStatus = deviceStatus.license_status;
+
 
                 // Store neccessary information to the registry
                 this.StoreLicenseInformationToRegistry();
@@ -384,5 +399,18 @@ namespace JSONParser.LicenseHelper
         public string InspectorPCCustomerId { get; set; }
         public string InspectorPCBaseUrl { get; set; }
         public string LicenseStatus { get; set; } = "";
+        public DateTime LicenseExpiryDate { get; set; } = DateTime.MinValue;
+    }
+
+    public static class LicenseStatuses
+    {
+        public static string NOT_ACTIVATED = "not_activated";
+        public static string VERIFIED = "verified";
+        public static string ACTIVE = "active";
+        public static string INACTIVE = "inactive";
+        public static string LICENSE_ACTIVATED = "license_activated";
+        public static string LICENSE_DEACTIVATED = "license_deactivated";
+        public static string TO_BE_RENEWED = "to_be_renewed";
+        public static string LICENSE_RENEWED = "license_renewed";
     }
 }
