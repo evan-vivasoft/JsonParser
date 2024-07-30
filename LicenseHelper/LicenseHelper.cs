@@ -158,29 +158,6 @@ namespace JSONParser.LicenseHelper
             }
         }
 
-        private async Task<string> LoginUsingCredentials(string customerId, string deviceId)
-        {
-            try
-            {
-                LoginDto data = new LoginDto
-                {
-                    customer_id = customerId,
-                    device_id = deviceId
-                };
-
-                using (var reqHandler = new RequestHandler.RequestHandler(_httpClient))
-                {
-                    var response = await reqHandler.PostAsync<ApiToken>(BaseUrl.TrimEnd('/') + ":8000/" + ConfigurationManager.AppSettings.Get("LoginUrl"), data);
-
-                    return response.token;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
         private T DecryptObject<T>(string cipherText)
         {
             try
@@ -245,36 +222,19 @@ namespace JSONParser.LicenseHelper
             }
         }
 
-        private void StoreLicenseInformationToRegistry()
+        private string EncryptLicensesInfo(LicenseInfo maybeLicenseInfo = null)
         {
-            try
-            {
-                if (Environment.Is64BitOperatingSystem)
+            LicenseInfo licenseInfo = 
+                maybeLicenseInfo ??
+                new LicenseInfo()
                 {
-                    Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath64Bit"), ConfigurationManager.AppSettings.Get("LicenseInfo"), EncryptLicensesInfo());
-                }
-                else
-                {
-                    Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("LicenseInfo"), EncryptLicensesInfo());
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error while saving license info in registry. {ex.Message}");
-            }
-        }
-
-        private string EncryptLicensesInfo()
-        {
-            LicenseInfo licenseInfo = new LicenseInfo()
-            {
-                InspectorPCBaseUrl = BaseUrl,
-                InspectorPCCustomerId = CustomerId.ToString(),
-                InspectorPCDeviceId = this._deviceId.ToString(),
-                InspectorPCApiToken = this._apiToken,
-                LicenseStatus = _licenseStatus,
-                LicenseExpiryDate = _licenseExpiryDate
-            };
+                    InspectorPCBaseUrl = BaseUrl,
+                    InspectorPCCustomerId = CustomerId.ToString(),
+                    InspectorPCDeviceId = this._deviceId.ToString(),
+                    InspectorPCApiToken = this._apiToken,
+                    LicenseStatus = _licenseStatus,
+                    LicenseExpiryDate = _licenseExpiryDate
+                };
 
             byte[] salt = new byte[16];
             using (var rng = new RNGCryptoServiceProvider())
@@ -320,8 +280,14 @@ namespace JSONParser.LicenseHelper
                 InitJsonElement(GetPayLoadFromToken(token));
                 CheckExpiryDate();
 
+                var loginDto = new LoginDto()
+                {
+                    customer_id = CustomerId,
+                    device_id = this._deviceId
+                };
+
                 this._deviceId = await GetDeviceID(token);
-                this._apiToken = await LoginUsingCredentials(CustomerId, this._deviceId);
+                this._apiToken = await CommonService.Login(loginDto, BaseUrl.TrimEnd('/') + ":8000/");
                 _reqHeaderWithToken.Add("token", this._apiToken);
 
 
@@ -345,7 +311,7 @@ namespace JSONParser.LicenseHelper
             }
         }
 
-        public LicenseInfo GetLicenseInfo()
+        public LicenseInfo GetStoredLicenseInfo()
         {
             var licenseCipher = 
                 Environment.Is64BitOperatingSystem
@@ -359,6 +325,25 @@ namespace JSONParser.LicenseHelper
 
             return this.DecryptObject<LicenseInfo>(licenseCipher);
         }
+
+        public void StoreLicenseInformationToRegistry(LicenseInfo maybeLicenseInfo = null)
+        {
+            try
+            {
+                if (Environment.Is64BitOperatingSystem)
+                {
+                    Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath64Bit"), ConfigurationManager.AppSettings.Get("LicenseInfo"), EncryptLicensesInfo(maybeLicenseInfo));
+                }
+                else
+                {
+                    Registry.SetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("LicenseInfo"), EncryptLicensesInfo(maybeLicenseInfo));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error while saving license info in registry. {ex.Message}");
+            }
+        }
         #endregion
     }
 
@@ -370,17 +355,6 @@ namespace JSONParser.LicenseHelper
     internal class DeviceId
     {
         public string device_id { get; set; }
-    }
-
-    internal class  ApiToken
-    {
-        public string token { get; set; }
-    }
-
-    internal class LoginDto
-    {
-        public string device_id { get; set; }
-        public string customer_id { get; set; }
     }
 
     internal class DeviceStatus

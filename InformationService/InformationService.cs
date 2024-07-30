@@ -42,7 +42,7 @@ namespace JSONParser.InformationService
         {
             get
             {
-                return ConfigurationManager.AppSettings.Get("StationInformationJsonDir");
+                return ConfigurationManager.AppSettings.Get("StationInformationJsonPath");
             }
         }
 
@@ -50,7 +50,7 @@ namespace JSONParser.InformationService
         {
             get
             {
-                return ConfigurationManager.AppSettings.Get("InspectionProcedureJsonDir");
+                return ConfigurationManager.AppSettings.Get("InspectionProcedureJsonPath");
             }
         }
 
@@ -81,7 +81,7 @@ namespace JSONParser.InformationService
             {
                 CreateFileIfNotExist(StationInfoFile);
 
-                string prsData = await RequestHandler.GetAsyncString(baseUrl.TrimEnd('/') + ":8000/" + StationInformationUrl, reqHeader);
+                string prsData = await RequestHandler.GetAsyncString(baseUrl.TrimEnd('/') + "/" + StationInformationUrl, reqHeader);
 
                 using (StreamWriter writer = new StreamWriter(StationInfoFile))
                 {

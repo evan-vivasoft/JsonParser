@@ -2,10 +2,13 @@
 using JSONParser.InspectionProcedure;
 using JSONParser.InspectionResults;
 using JSONParser.InspectionResults.Model;
+using JSONParser.PlexorInformation;
 using JSONParser.RequestHandler;
 using JSONParser.StationInformation;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -37,11 +40,15 @@ namespace JSONParser.InformationManager
             get
             {
                 var jsonLine = "";
-
-                using (StreamReader reader = new StreamReader("./inspectionProcedure.json"))
+                CreateFileIfNotExist(ConfigurationManager.AppSettings.Get("InspectionProcedureJsonPath"));
+                using (StreamReader reader = new StreamReader(ConfigurationManager.AppSettings.Get("InspectionProcedureJsonPath")))
                 {
                     jsonLine = reader.ReadToEnd();
                 }
+                jsonLine =
+                       string.IsNullOrEmpty(jsonLine)
+                           ? "[]"
+                           : jsonLine;
                 using (var adapter = new InspectionProcedureAdapter(jsonLine))
                 {
                     return adapter.GetJsonToXml;
@@ -67,14 +74,40 @@ namespace JSONParser.InformationManager
         {
             get
             {
+                CreateFileIfNotExist(ConfigurationManager.AppSettings.Get("StationInformationJsonPath"));
                 var jsonLine = "";
-                using (StreamReader reader = new StreamReader("./stationInformation.json"))
+                using (StreamReader reader = new StreamReader(ConfigurationManager.AppSettings.Get("StationInformationJsonPath")))
                 {
                     jsonLine = reader.ReadToEnd();
                 }
+                jsonLine =
+                       string.IsNullOrEmpty(jsonLine)
+                           ? "[]"
+                           : jsonLine;
                 using (var adapter = new PRSEntityAdapter(jsonLine))
                 {
                     return adapter.GetPRSEntityListForPRSJson;
+                }
+            }
+        }
+
+        public List<PlexorEntity> GetPlexorInformation
+        {
+            get
+            {
+                var jsonLine = "";
+                CreateFileIfNotExist(ConfigurationManager.AppSettings.Get("PlexorInformationJsonPath"));
+                using (StreamReader reader = new StreamReader(ConfigurationManager.AppSettings.Get("PlexorInformationJsonPath")))
+                {
+                    jsonLine = reader.ReadToEnd();
+                }
+                jsonLine =
+                       string.IsNullOrEmpty(jsonLine)
+                           ? "[]"
+                           : jsonLine;
+                using (var adapter = new PlexorDeviceEntityAdapter(jsonLine))
+                {
+                    return adapter.GetPlexorEntityListFromJson;
                 }
             }
         }
@@ -92,7 +125,7 @@ namespace JSONParser.InformationManager
 
             try
             {
-                using (StreamWriter sw = new StreamWriter("./result.json", false, Encoding.UTF8))
+                using (StreamWriter sw = new StreamWriter(ConfigurationManager.AppSettings.Get("ResultJsonFilePath"), false, Encoding.UTF8))
                 {
                     var options = new JsonSerializerOptions
                     {
@@ -191,7 +224,7 @@ namespace JSONParser.InformationManager
 
                 try
                 {
-                    using (StreamReader reader = new StreamReader("./result.json"))
+                    using (StreamReader reader = new StreamReader(ConfigurationManager.AppSettings.Get("ResultJsonFilePath")))
                     {
                         jsonLine = reader.ReadToEnd();
                     }
@@ -207,6 +240,14 @@ namespace JSONParser.InformationManager
                 {
                     throw new InvalidDataException(ex.Message);
                 }
+            }
+        }
+
+        private void CreateFileIfNotExist(string fileName)
+        {
+            if (!File.Exists(fileName))
+            {
+                File.Create(fileName);
             }
         }
     }
