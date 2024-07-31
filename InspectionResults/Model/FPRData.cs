@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 namespace JSONParser.InspectionResults.Model
@@ -8,8 +9,8 @@ namespace JSONParser.InspectionResults.Model
         public double SampleRate { get; set; }
         public double Interval { get; set; }
         public int CountTotal { get; set; }
-        public string StartAt { get; set; }
-        public string EndAt { get; set; }
+        public DateTime StartAt { get; set; }
+        public DateTime? EndAt { get; set; }
         public UnitOfMeasurement Uom {  get; set; }
         public List<MeasurementValue> Data { get; set; }
         public List<MeasurementValue> ExtraData { get; set; }

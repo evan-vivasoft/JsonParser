@@ -77,7 +77,14 @@ namespace JSONParser.StationInformation
 
         public PRSEntityAdapter(string jsonLine) 
         {
-            this._allPrs = JsonSerializer.Deserialize<List<PRSJson>>(jsonLine);
+            try
+            {
+                this._allPrs = JsonSerializer.Deserialize<List<PRSJson>>(jsonLine);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Couldn't parse prs information. {e.Message}");
+            }
         }
 
         private bool IsJSONDataValid

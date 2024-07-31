@@ -47,7 +47,7 @@ namespace JSONParser.InspectionResults
             return (
                 new InspectionResultJSON
                 {
-                    status = result.Status ?? null,
+                    status = result.Status.ToString() ?? null,
                     prs_id = result.PRSId,
                     prs_identification = result.PRSIdentification,
                     prs_name = result.PRSName,
@@ -59,7 +59,7 @@ namespace JSONParser.InspectionResults
                     measurement_equipment = GetMeasurementEquipmentObjFromMeasurementStr(result.Measurement_Equipment),
                     inspection_procedure_name = result.InspectionProcedure.Name,
                     inspection_procedure_id = result.InspectionProcedureId ?? Guid.Empty,
-                    inspection_procedure_version = Double.Parse(result.InspectionProcedure.Version),
+                    inspection_procedure_version = result.InspectionProcedure.Version,
                     start_date = result.DateTimeStamp.StartDate,
                     start_time = result.DateTimeStamp.StartTime,
                     end_time = result.DateTimeStamp.EndTime,
@@ -92,7 +92,7 @@ namespace JSONParser.InspectionResults
                     object_id = result.ObjectID,
                     maximum_value = result.MaximumValue ?? null,
                     minimum_value = result.MinimumValue ?? null,
-                    uom = (UnitOfMeasurement)((int)result.Uom),
+                    uom = (result.Uom).ToString(),
                     offset = result.Offset ?? null,
                     measure_point_id = result.MeasurePointID ?? null,
                     time = result.Time,
@@ -101,7 +101,7 @@ namespace JSONParser.InspectionResults
                     measure_value = new MeasureValueType
                     {
                         value = result.MeasureValue.Value,
-                        uom = (UnitOfMeasurement) ((int)(result.MeasureValue.UOM)),
+                        uom = (result.MeasureValue.UOM).ToString(),
                     },
                     fpr_data = GetFprCompatibleData(result.FprData)
                 }
@@ -117,9 +117,9 @@ namespace JSONParser.InspectionResults
                 count_total = fpr.CountTotal,
                 start_at = fpr.StartAt,
                 end_at = fpr.EndAt,
-                uom = Helper.GetDescription(fpr.Uom),
+                uom = (fpr.Uom).ToString(),
                 data = GetCompatibleMeasuredValues(fpr.Data),
-                extra_date = GetCompatibleMeasuredValues(fpr.ExtraData)
+                extra_data = GetCompatibleMeasuredValues(fpr.ExtraData)
             };
         }
 

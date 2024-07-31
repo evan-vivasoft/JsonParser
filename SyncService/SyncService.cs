@@ -13,6 +13,7 @@ using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml;
 
 
 namespace JSONParser.SyncService
@@ -53,20 +54,25 @@ namespace JSONParser.SyncService
 
         public async Task CheckLicenseInformation(Action<string> callBack)
         {
-            Exception maybeException = null;
+            string maybeError = null;
             try
             {
                 var storedLicenseInfo = _licenseHelper.GetStoredLicenseInfo();
                 var maybeUpdatedLicenseInfo = await GetUpdatedLicenseInfo();
-                var isLicenseValid = !IsLicenseActive(maybeUpdatedLicenseInfo);
+                var isLicenseValid = IsLicenseActive(maybeUpdatedLicenseInfo);
 
-                UpdateStoredLicenseInfo();
+                if (!isLicenseValid)
+                {
+                    maybeError = "License is inactive or has exceeded expiry date";
+                }
+
+                UpdateStoredLicenseInfo(maybeUpdatedLicenseInfo);
             }
             catch (Exception ex)
             {
-                maybeException = ex;
+                maybeError = ex.Message;
             }
-            callBack?.Invoke(maybeException?.Message);
+            callBack?.Invoke(maybeError);
         }
 
         public bool IsResultFilePresent
@@ -101,22 +107,28 @@ namespace JSONParser.SyncService
             }
         }
 
-        public async Task FetchUpdatedData(Action<string> callBack)
+        public async Task FetchUpdatedData(string applicationXmlPath, Action<string> callBack)
         {
-            Exception maybeException = null;
+            ErrorStringList maybeErrors = new ErrorStringList();
             try
             {
-                await StorePRSInformation();
-                await StoreInspectionProcedure();
-                // TODO: Update Manometer data
-                await StorePlexorDeviceInfo();
+                CreateDirectoryIfNotExist();
+                string maybeError;
+                maybeError = await StorePRSInformation();
+                maybeErrors.Add(maybeError);
+                maybeError = await StoreInspectionProcedure();
+                maybeErrors.Add(maybeError);
+                maybeError = await StorePlexorDeviceInfo();
+                maybeErrors.Add(maybeError);
+                maybeError = await UpdateApplicationSettingsFile(applicationXmlPath);
+                maybeErrors.Add(maybeError);
             }
             catch (Exception ex)
             {
-                maybeException = ex;
+                maybeErrors.Add(ex.Message);
             }
 
-            callBack?.Invoke(maybeException?.Message);
+            callBack?.Invoke(maybeErrors.Pop());
         }
 
         #region Helper methods
@@ -136,14 +148,27 @@ namespace JSONParser.SyncService
             }
         }
 
-        private bool IsLicenseActive(DeviceStatus deviceStatus)
+        private void CreateDirectoryIfNotExist()
         {
-            return !deviceStatus.is_active || deviceStatus.license_expiry_date.ToUniversalTime() < DateTime.UtcNow;
+            if (!Directory.Exists(Assembly.GetExecutingAssembly().Location + "Data/JSON"))
+            {
+                Directory.CreateDirectory(Assembly.GetExecutingAssembly().Location + "Data/JSON");
+            }
         }
 
-        private void UpdateStoredLicenseInfo()
+        private bool IsLicenseActive(DeviceStatus deviceStatus)
         {
+            return deviceStatus.is_active && deviceStatus.license_expiry_date.ToUniversalTime() >= DateTime.UtcNow;
+        }
 
+        private void UpdateStoredLicenseInfo(DeviceStatus updateLicenseInformation)
+        {
+            var storedLicenseInfo = _licenseHelper.GetStoredLicenseInfo();
+
+            storedLicenseInfo.LicenseExpiryDate = updateLicenseInformation.license_expiry_date;
+            storedLicenseInfo.LicenseStatus = updateLicenseInformation.license_status;
+
+            _licenseHelper.StoreLicenseInformationToRegistry(storedLicenseInfo);
         }
 
         private string GetBaseUrl
@@ -166,7 +191,7 @@ namespace JSONParser.SyncService
         {
             get
             {
-                return ConfigurationManager.AppSettings.Get("StationInformationJsonPath");
+                return "Data/JSON/" + ConfigurationManager.AppSettings.Get("StationInformationJsonPath");
             }
         }
 
@@ -182,7 +207,7 @@ namespace JSONParser.SyncService
         {
             get
             {
-                return ConfigurationManager.AppSettings.Get("InspectionProcedureJsonPath");
+                return "Data/JSON/" + ConfigurationManager.AppSettings.Get("InspectionProcedureJsonPath");
             }
         }
 
@@ -198,7 +223,7 @@ namespace JSONParser.SyncService
         {
             get
             {
-                return ConfigurationManager.AppSettings.Get("PlexorInformationJsonPath");
+                return "Data/JSON/" + ConfigurationManager.AppSettings.Get("PlexorInformationJsonPath");
             }
         }
 
@@ -215,7 +240,6 @@ namespace JSONParser.SyncService
             try
             {
                 CreateFileIfNotExist(StationInformationJsonPath);
-                var currentDir = Assembly.GetExecutingAssembly().Location;
                 string prsData = await _requestHandler.GetAsyncString(GetBaseUrl + StationInformationAPIUrl, _reqHeaderWithToken);
 
                 using (StreamWriter writer = new StreamWriter(StationInformationJsonPath))
@@ -272,6 +296,109 @@ namespace JSONParser.SyncService
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<string> UpdateApplicationSettingsFile(string xmlFilePath)
+        {
+            string maybeError = null;
+            try
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                UnitSection newUnitSection = await GetUnitSection();
+
+                xmlDoc.Load(xmlFilePath);
+
+                XmlNode unitSection = xmlDoc.SelectSingleNode("//Settings[@Section='UNITS']");
+
+                if (unitSection != null)
+                {
+                    UpdateSetting(unitSection, "UnitLowPressure", newUnitSection.unit_low_pressure.ToString());
+                    UpdateSetting(unitSection, "UnitHighPressure", newUnitSection.unit_high_pressure.ToString());
+                    UpdateSetting(unitSection, "FactorLowHighPressure", newUnitSection.factor_low_high_pressure.ToString());
+                    UpdateSetting(unitSection, "FactorMeasuredChangeRateToMbarMin", newUnitSection.factor_measured_change_rate_to_mbar_min.ToString());
+                    UpdateSetting(unitSection, "FactorMbarMinToUnitChangeRate", newUnitSection.factor_mbar_min_to_unit_change_rate.ToString());
+                    UpdateSetting(unitSection, "UnitChangeRate", newUnitSection.unit_change_rate.ToString());
+                    UpdateSetting(unitSection, "UnitQVSLeakage", newUnitSection.unit_qvs_leakage.ToString());
+                    UpdateSetting(unitSection, "FactorQVS", newUnitSection.factor_qvs.ToString());
+
+                    xmlDoc.Save(xmlFilePath);
+                }
+                else
+                {
+                    maybeError = "UnitSection not found for the given file";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                maybeError = ex.Message;
+            }
+            return maybeError;
+        }
+
+        private async Task<UnitSection> GetUnitSection()
+        {
+            try
+            {
+                var unitSection = await _requestHandler.GetAsync<UnitSection>(GetBaseUrl + ConfigurationManager.AppSettings.Get("UnitSectionAPIUrl"), _reqHeaderWithToken);
+                return unitSection;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void UpdateSetting(XmlNode unitsSection, string settingName, string newValue)
+        {
+            XmlNode settingNode = unitsSection.SelectSingleNode($"Setting[@name='{settingName}']");
+            if (settingNode != null)
+            {
+                settingNode.Attributes["Value"].Value = newValue;
+            }
+            else
+            {
+                // If the setting does not exist, create it
+                XmlElement newSettingNode = unitsSection.OwnerDocument.CreateElement("Setting");
+                newSettingNode.SetAttribute("name", settingName);
+                newSettingNode.SetAttribute("Value", newValue);
+                unitsSection.AppendChild(newSettingNode);
+            }
+        }
         #endregion
+    }
+
+    internal class UnitSection
+    {
+        public string unit_low_pressure { get; set; }
+        public string unit_high_pressure { get; set; }
+        public double factor_low_high_pressure { get; set; }
+        public double factor_measured_change_rate_to_mbar_min { get; set; }
+        public double factor_mbar_min_to_unit_change_rate { get; set; }
+        public string unit_change_rate { get; set; }
+        public string unit_qvs_leakage { get; set; }
+        public double factor_qvs { get; set; }
+    }
+
+    internal class ErrorStringList : List<string>
+    {
+        public ErrorStringList() { }
+        public new bool Add(string name)
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                base.Add(name);
+                return true;
+            }
+            return false;
+        }
+
+        public string Pop()
+        {
+            if (base.Count == 0)
+            {
+                return null;
+            }
+            return base[0];
+        }
     }
 }

@@ -124,7 +124,7 @@ namespace JSONParser.InspectionResults.Model
         /// <value>
         /// The start time.
         /// </value>
-        public string StartTime { get; set; }
+        public DateTime StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the end time.
@@ -132,7 +132,7 @@ namespace JSONParser.InspectionResults.Model
         /// <value>
         /// The start time.
         /// </value>
-        public string EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum value time stamp.

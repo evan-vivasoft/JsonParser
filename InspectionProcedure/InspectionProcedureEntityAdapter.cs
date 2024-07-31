@@ -16,7 +16,14 @@ namespace JSONParser.InspectionProcedure
         #region Constructor
         public InspectionProcedureAdapter(string jsonStr) 
         {
-            this._inspectionProcedureJson = JsonSerializer.Deserialize<List<InspectionProcedureJson>>(jsonStr);
+            try
+            {
+                this._inspectionProcedureJson = JsonSerializer.Deserialize<List<InspectionProcedureJson>>(jsonStr);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Couldn't parse inspection procedure. {ex.Message}");
+            }
         }
         #endregion
 

@@ -8,7 +8,7 @@ namespace JSONParser.InspectionResults
 {
     internal class InspectionResultJSON
     {
-        public int? status {  get; set; }
+        public string status {  get; set; }
         public Guid prs_id { get; set; }
         public string prs_name { get; set; }
         public string prs_identification { get; set; }
@@ -19,7 +19,7 @@ namespace JSONParser.InspectionResults
         public string gcl_code { get;set; }
         public Guid inspection_procedure_id {  get; set; }
         public string inspection_procedure_name { get;set; }
-        public double inspection_procedure_version { get; set; }
+        public string inspection_procedure_version { get; set; }
         public MeasurementEquipmentJson measurement_equipment { get; set; }
         public string start_date { get; set; }
         public string start_time { get; set; }
@@ -40,7 +40,7 @@ namespace JSONParser.InspectionResults
         public double? maximum_value { get; set; }
         public double? minimum_value { get; set; }
         public double? offset { get; set; }
-        public UnitOfMeasurement? uom { get; set; }
+        public string uom { get; set; }
         public string time { get; set; }
         public MeasureValueType measure_value { get; set; }
         public string text { get; set; }
@@ -53,11 +53,11 @@ namespace JSONParser.InspectionResults
         public double sample_rate { get; set; }
         public double interval { get; set; }
         public int count_total { get; set; }
-        public string start_at { get; set; }
-        public string end_at { get; set; }
+        public DateTime start_at { get; set; }
+        public DateTime? end_at { get; set; }
         public string uom { get; set; }
         public List<MeasuredValues> data { get; set; }
-        public List<MeasuredValues> extra_date { get; set; }
+        public List<MeasuredValues> extra_data { get; set; }
     }
 
     internal class MeasuredValues
@@ -70,7 +70,7 @@ namespace JSONParser.InspectionResults
     internal class MeasureValueType
     {
         public double value { get; set; }
-        public UnitOfMeasurement uom { get; set; }
+        public string uom { get; set; }
     }
     internal class MeasurementEquipmentJson
     {

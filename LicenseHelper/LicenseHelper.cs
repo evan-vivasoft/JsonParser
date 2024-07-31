@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
+using System.Net.NetworkInformation;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
@@ -27,7 +29,29 @@ namespace JSONParser.LicenseHelper
         private DateTime _licenseExpiryDate;
         #endregion
         
+
         #region Getters
+        // <summary> It gets the actual device key based on machineName and macAddress. We might have to think of it as machine name can be changed anytime</summary>
+        public string ActualDeviceKey
+        {
+            get
+            {
+                string macAddress =
+                    NetworkInterface
+                    .GetAllNetworkInterfaces()
+                    .Where(nic => 
+                        nic.OperationalStatus == OperationalStatus.Up 
+                        && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback
+                        && nic.GetIPProperties().UnicastAddresses.Count > 0
+                        && !nic.Description.ToUpper().Contains("BLUETOOTH")
+                    )
+                    .Select(nic => nic.GetPhysicalAddress().ToString())
+                    .FirstOrDefault();
+
+                return Environment.MachineName + "-" + macAddress;
+            }
+        }
+
         private string DeviceKey
         {
             get
@@ -64,7 +88,7 @@ namespace JSONParser.LicenseHelper
         {
             get
             {
-                return BaseUrl.TrimEnd('/') + ":8000/" + VerificationUrl.TrimStart('/');
+                return BaseUrl.TrimEnd('/') + "/" + VerificationUrl.TrimStart('/');
             }
         }
 
@@ -142,22 +166,6 @@ namespace JSONParser.LicenseHelper
             }
         }
 
-        private async Task MaybeFetchAndStoreInformationJson()
-        {
-            try
-            {
-                using (IInformationService informationService = new InformationService.InformationService())
-                {
-                    await informationService.StoreInspectionProcedure(BaseUrl, _reqHeaderWithToken);
-                    await informationService.StoreStationInformation(BaseUrl, _reqHeaderWithToken);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
         private T DecryptObject<T>(string cipherText)
         {
             try
@@ -212,7 +220,7 @@ namespace JSONParser.LicenseHelper
             {
                 using (var reqHandler = new RequestHandler.RequestHandler(_httpClient))
                 {
-                    DeviceStatus deviceStatus = await reqHandler.GetAsync<DeviceStatus>(BaseUrl.TrimEnd('/') + ":8000/" + ConfigurationManager.AppSettings.Get("DeviceStatusUrl"), _reqHeaderWithToken);
+                    DeviceStatus deviceStatus = await reqHandler.GetAsync<DeviceStatus>(BaseUrl.TrimEnd('/') + "/" + ConfigurationManager.AppSettings.Get("DeviceStatusUrl"), _reqHeaderWithToken);
                     return deviceStatus;
                 }
             }
@@ -231,7 +239,6 @@ namespace JSONParser.LicenseHelper
                     InspectorPCBaseUrl = BaseUrl,
                     InspectorPCCustomerId = CustomerId.ToString(),
                     InspectorPCDeviceId = this._deviceId.ToString(),
-                    InspectorPCApiToken = this._apiToken,
                     LicenseStatus = _licenseStatus,
                     LicenseExpiryDate = _licenseExpiryDate
                 };
@@ -278,16 +285,20 @@ namespace JSONParser.LicenseHelper
             try
             {
                 InitJsonElement(GetPayLoadFromToken(token));
+                if (ActualDeviceKey != DeviceKey)
+                {
+                    throw new Exception($"Device key didn't match. {ActualDeviceKey}, {DeviceKey}");
+                }
+
                 CheckExpiryDate();
+                this._deviceId = await GetDeviceID(token);
 
                 var loginDto = new LoginDto()
                 {
                     customer_id = CustomerId,
                     device_id = this._deviceId
                 };
-
-                this._deviceId = await GetDeviceID(token);
-                this._apiToken = await CommonService.Login(loginDto, BaseUrl.TrimEnd('/') + ":8000/");
+                this._apiToken = await CommonService.Login(loginDto, BaseUrl.TrimEnd('/') + "/");
                 _reqHeaderWithToken.Add("token", this._apiToken);
 
 
@@ -301,8 +312,6 @@ namespace JSONParser.LicenseHelper
 
                 // Store neccessary information to the registry
                 this.StoreLicenseInformationToRegistry();
-                // Call this api after customer clicks on `Sync` button
-                //await MaybeFetchAndStoreInformationJson();
                 callBack?.Invoke(deviceStatus.license_status, licenseExpiredIn.ToString());
             }
             catch (Exception ex)
@@ -368,7 +377,6 @@ namespace JSONParser.LicenseHelper
     [Serializable]
     public class LicenseInfo
     {
-        public string InspectorPCApiToken { get; set; }
         public string InspectorPCDeviceId { get; set; }
         public string InspectorPCCustomerId { get; set; }
         public string InspectorPCBaseUrl { get; set; }
