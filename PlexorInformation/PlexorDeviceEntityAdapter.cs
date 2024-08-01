@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace JSONParser.PlexorInformation
+namespace Inspector.POService.PlexorInformation
 {
     public class PlexorDeviceEntityAdapter : IDisposable
     {

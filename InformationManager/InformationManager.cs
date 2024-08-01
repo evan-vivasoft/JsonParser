@@ -1,10 +1,10 @@
 ﻿using Autofac;
-using JSONParser.InspectionProcedure;
-using JSONParser.InspectionResults;
-using JSONParser.InspectionResults.Model;
-using JSONParser.PlexorInformation;
-using JSONParser.RequestHandler;
-using JSONParser.StationInformation;
+using Inspector.POService.InspectionProcedure;
+using Inspector.POService.InspectionResults;
+using Inspector.POService.InspectionResults.Model;
+using Inspector.POService.PlexorInformation;
+using Inspector.POService.RequestHandler;
+using Inspector.POService.StationInformation;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,7 +18,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace JSONParser.InformationManager
+namespace Inspector.POService.InformationManager
 {
     public class InformationManager: IInformationManager
     {

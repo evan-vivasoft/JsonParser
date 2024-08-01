@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using JSONParser.InspectionProcedure.ScriptCommandFactory;
+using Inspector.POService.InspectionProcedure.ScriptCommandFactory;
 
-namespace JSONParser.InspectionProcedure
+namespace Inspector.POService.InspectionProcedure
 {
     internal class InspectionProcedureAdapter: IDisposable
     {

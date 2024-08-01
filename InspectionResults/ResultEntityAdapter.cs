@@ -1,9 +1,9 @@
-﻿using JSONParser.InspectionResults.Model;
+﻿using Inspector.POService.InspectionResults.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace JSONParser.InspectionResults
+namespace Inspector.POService.InspectionResults
 {
     internal class ResultEntityAdapter : IDisposable
     {

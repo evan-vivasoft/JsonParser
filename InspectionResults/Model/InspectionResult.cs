@@ -10,9 +10,8 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml.Serialization;
-using JSONParser.InspectionResults.Model;
 
-namespace JSONParser.InspectionResults.Model
+namespace Inspector.POService.InspectionResults.Model
 {
     /// <summary>
     /// This Class represents part XML model used to create the InspectionResultsData Report.

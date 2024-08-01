@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-namespace JSONParser.RequestHandler
+namespace Inspector.POService.RequestHandler
 {
     internal class RequestHandler: IRequestHandler, IDisposable
     {
@@ -23,7 +23,6 @@ namespace JSONParser.RequestHandler
         {
             try
             {
-                var token = ConfigurationManager.AppSettings.Get("AuthToken");
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
 
                 if (maybeHeader != null)

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace JSONParser.InspectionProcedure
+namespace Inspector.POService.InspectionProcedure
 {
     [XmlRoot(ElementName = "InspectionProcedure")]
     public class InspectionProcedureEntityJsonParserProject

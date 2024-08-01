@@ -8,7 +8,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace JSONParser.InspectionResults.Model
+namespace Inspector.POService.InspectionResults.Model
 {
     /// <summary>
     /// This Class represents part XML model used to create the InspectionResultsData Report.

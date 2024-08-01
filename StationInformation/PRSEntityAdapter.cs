@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text.Json;
 
-namespace JSONParser.StationInformation
+namespace Inspector.POService.StationInformation
 {
     internal class PRSEntityAdapter:IDisposable
     {

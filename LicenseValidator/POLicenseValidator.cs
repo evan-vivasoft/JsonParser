@@ -1,5 +1,4 @@
-﻿using JSONParser.InformationService;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,9 +12,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace JSONParser.LicenseHelper
+namespace Inspector.POService.LicenseValidator
 {
-    public class LicenseHelper
+    public class POLicenseValidator : IPOLicenseValidator
     {
         #region Member variables
 
@@ -27,10 +26,10 @@ namespace JSONParser.LicenseHelper
         private HttpClient _httpClient = new HttpClient();
         private string _licenseStatus;
         private DateTime _licenseExpiryDate;
+        private LicenseInfo _maybeLicenseInfo;
         #endregion
-        
 
-        #region Getters
+        #region Public Getters
         // <summary> It gets the actual device key based on machineName and macAddress. We might have to think of it as machine name can be changed anytime</summary>
         public string ActualDeviceKey
         {
@@ -51,7 +50,50 @@ namespace JSONParser.LicenseHelper
                 return Environment.MachineName + "-" + macAddress;
             }
         }
+        public LicenseInfo GetStoredLicenseInfo
+        {
+            get
+            {
+                if (_maybeLicenseInfo is null)
+                {
+                    var licenseCipher =
+                        Environment.Is64BitOperatingSystem
+                            ? Registry.GetValue(ConfigurationManager.AppSettings.Get("RegistryPath64Bit"), ConfigurationManager.AppSettings.Get("LicenseInfo"), null) as string
+                            : Registry.GetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("LicenseInfo"), null) as string;
 
+                    _maybeLicenseInfo =
+                        licenseCipher == null
+                            ? new LicenseInfo()
+                            : this.DecryptObject<LicenseInfo>(licenseCipher);
+                }
+                return _maybeLicenseInfo;
+            }
+        }
+
+        public bool IsNewUser
+        {
+            get
+            {
+                var maybeLicense =
+                    Environment.Is64BitOperatingSystem
+                        ? Registry.GetValue(ConfigurationManager.AppSettings.Get("RegistryPath64Bit"), ConfigurationManager.AppSettings.Get("LicenseInfo"), null)
+                        : Registry.GetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("LicenseInfo"), null);
+                return maybeLicense == null;
+            }
+        }
+
+        public string GetLicenseStatus => GetStoredLicenseInfo.LicenseStatus;
+
+        public string GetCustomerId => GetStoredLicenseInfo.InspectorPCCustomerId;
+
+        public DateTime GetLicenseExpiryDate => GetStoredLicenseInfo.LicenseExpiryDate;
+
+        public string GetDeviceId => GetStoredLicenseInfo.InspectorPCDeviceId;
+
+        public string GetBaseUrl => GetStoredLicenseInfo.InspectorPCBaseUrl;
+        #endregion
+
+        #region Private getters
         private string DeviceKey
         {
             get
@@ -318,21 +360,6 @@ namespace JSONParser.LicenseHelper
             {
                 throw new Exception("Error decoding token: " + ex.Message);
             }
-        }
-
-        public LicenseInfo GetStoredLicenseInfo()
-        {
-            var licenseCipher = 
-                Environment.Is64BitOperatingSystem
-                    ? Registry.GetValue(ConfigurationManager.AppSettings.Get("RegistryPath64Bit"), ConfigurationManager.AppSettings.Get("LicenseInfo"), null) as string
-                    : Registry.GetValue(ConfigurationManager.AppSettings.Get("RegistryPath"), ConfigurationManager.AppSettings.Get("LicenseInfo"), null) as string;
-
-            if (licenseCipher == null)
-            {
-                return new LicenseInfo();
-            }
-
-            return this.DecryptObject<LicenseInfo>(licenseCipher);
         }
 
         public void StoreLicenseInformationToRegistry(LicenseInfo maybeLicenseInfo = null)

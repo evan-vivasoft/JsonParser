@@ -1,10 +1,7 @@
-﻿using JSONParser.InspectionProcedure;
-using JSONParser.InspectionResults.Model;
-using JSONParser.StationInformation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace JSONParser.InspectionResults
+namespace Inspector.POService.InspectionResults
 {
     internal class InspectionResultJSON
     {

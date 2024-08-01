@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JSONParser.InspectionProcedure
+namespace Inspector.POService.InspectionProcedure
 
 {
     internal class InspectionProcedureJson

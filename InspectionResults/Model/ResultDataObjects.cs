@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace JSONParser.InspectionResults.Model
+namespace Inspector.POService.InspectionResults.Model
 {
 
 /// <summary>

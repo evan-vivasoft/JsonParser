@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace JSONParser.PlexorInformation
+namespace Inspector.POService.PlexorInformation
 {
     /// <summary>
     /// Contains a collection of plexor information

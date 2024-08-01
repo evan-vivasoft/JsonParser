@@ -1,11 +1,11 @@
-﻿using JSONParser.StationInformation;
+﻿using Inspector.POService.StationInformation;
 using System.Collections.Generic;
-using JSONParser.InspectionProcedure;
-using JSONParser.InspectionResults.Model;
+using Inspector.POService.InspectionProcedure;
+using Inspector.POService.InspectionResults.Model;
 using System.Threading.Tasks;
-using JSONParser.PlexorInformation;
+using Inspector.POService.PlexorInformation;
 
-namespace JSONParser.InformationManager
+namespace Inspector.POService.InformationManager
 {
     public interface IInformationManager
     {

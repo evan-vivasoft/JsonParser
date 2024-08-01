@@ -1,45 +1,41 @@
-﻿using JSONParser.InformationService;
-using JSONParser.InspectionResults;
-using JSONParser.LicenseHelper;
-using JSONParser.StationInformation;
+﻿using Inspector.POService.InspectionResults;
+using Inspector.POService.LicenseValidator;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Reflection;
-using System.Reflection.PortableExecutable;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml;
 
 
-namespace JSONParser.SyncService
+namespace Inspector.POService.SyncService
 {
-    public class SyncService
+    public class SyncService : IDisposable
     {
         #region Member Variables
-        private LicenseHelper.LicenseHelper _licenseHelper;
+        private POLicenseValidator _licenseValidator;
         private string _apiToken;
         private HttpClient _httpClient;
         private LicenseInfo _licenseInfo;
         private Dictionary<string, string> _reqHeaderWithToken = new Dictionary<string, string>();
         private string _resultFileStringDir = ConfigurationManager.AppSettings.Get("ResultJsonFilePath");
         private RequestHandler.IRequestHandler _requestHandler;
+        private bool disposedValue;
         #endregion
 
         public SyncService() 
         {
-            _licenseHelper = new LicenseHelper.LicenseHelper();
+            _licenseValidator = new POLicenseValidator();
             _httpClient = new HttpClient();
             _requestHandler = new RequestHandler.RequestHandler(_httpClient);
         }
 
         public async Task ConnectWithPlexorOnline(Action<string> callBack)
         {
-            _licenseInfo = _licenseHelper.GetStoredLicenseInfo();
+            _licenseInfo = _licenseValidator.GetStoredLicenseInfo;
             var loginDto = new LoginDto()
             {
                 customer_id = _licenseInfo.InspectorPCCustomerId,
@@ -57,7 +53,7 @@ namespace JSONParser.SyncService
             string maybeError = null;
             try
             {
-                var storedLicenseInfo = _licenseHelper.GetStoredLicenseInfo();
+                var storedLicenseInfo = _licenseValidator.GetStoredLicenseInfo;
                 var maybeUpdatedLicenseInfo = await GetUpdatedLicenseInfo();
                 var isLicenseValid = IsLicenseActive(maybeUpdatedLicenseInfo);
 
@@ -163,12 +159,12 @@ namespace JSONParser.SyncService
 
         private void UpdateStoredLicenseInfo(DeviceStatus updateLicenseInformation)
         {
-            var storedLicenseInfo = _licenseHelper.GetStoredLicenseInfo();
+            var storedLicenseInfo = _licenseValidator.GetStoredLicenseInfo;
 
             storedLicenseInfo.LicenseExpiryDate = updateLicenseInformation.license_expiry_date;
             storedLicenseInfo.LicenseStatus = updateLicenseInformation.license_status;
 
-            _licenseHelper.StoreLicenseInformationToRegistry(storedLicenseInfo);
+            _licenseValidator.StoreLicenseInformationToRegistry(storedLicenseInfo);
         }
 
         private string GetBaseUrl
@@ -363,6 +359,35 @@ namespace JSONParser.SyncService
                 newSettingNode.SetAttribute("Value", newValue);
                 unitsSection.AppendChild(newSettingNode);
             }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~SyncService()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        void IDisposable.Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
         #endregion
     }

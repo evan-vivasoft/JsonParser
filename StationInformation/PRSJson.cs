@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace JSONParser.StationInformation
+namespace Inspector.POService.StationInformation
 {
     internal class PRSJson
     {

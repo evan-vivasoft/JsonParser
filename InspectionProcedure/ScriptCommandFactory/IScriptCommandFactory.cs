@@ -1,4 +1,4 @@
-﻿namespace JSONParser.InspectionProcedure.ScriptCommandFactory
+﻿namespace Inspector.POService.InspectionProcedure.ScriptCommandFactory
 {
     public interface IScriptCommandFactory
     {

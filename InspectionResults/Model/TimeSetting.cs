@@ -8,7 +8,7 @@
 using System;
 using System.Text;
 
-namespace JSONParser.InspectionResults.Model
+namespace Inspector.POService.InspectionResults.Model
 {
     /// <summary>
     /// This Class represents part XML model used to create the InspectionResultsData Report.

@@ -1,11 +1,8 @@
-﻿using JSONParser.InspectionProcedure;
-using JSONParser.RequestHandler;
-using System;
+﻿using Inspector.POService.InspectionProcedure;
+using Inspector.POService.RequestHandler;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -19,7 +16,7 @@ namespace JSONParser.Tests
         public RequestHandlerTest()
         {
             _httpClient = new HttpClient();
-            _requestHandler = new RequestHandler.RequestHandler(_httpClient);
+            _requestHandler = new RequestHandler(_httpClient);
         }
 
         [Fact]

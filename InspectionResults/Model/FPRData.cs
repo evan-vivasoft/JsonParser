@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace JSONParser.InspectionResults.Model
+namespace Inspector.POService.InspectionResults.Model
 {
     public class FPRData
     {

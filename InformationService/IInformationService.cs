@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JSONParser.InformationService
+namespace Inspector.POService.InformationService
 {
     public interface IInformationService : IDisposable
     {

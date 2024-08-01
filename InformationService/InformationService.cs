@@ -1,15 +1,11 @@
-﻿using Autofac;
-using JSONParser.InspectionProcedure;
-using JSONParser.RequestHandler;
-using JSONParser.StationInformation;
+﻿using Inspector.POService.RequestHandler;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace JSONParser.InformationService
+namespace Inspector.POService.InformationService
 {
     internal class InformationService : IInformationService, IDisposable
     {

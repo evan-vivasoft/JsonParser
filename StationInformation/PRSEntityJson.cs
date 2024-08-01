@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace JSONParser.StationInformation
+namespace Inspector.POService.StationInformation
 {
     public class PRSEntityJson
     {

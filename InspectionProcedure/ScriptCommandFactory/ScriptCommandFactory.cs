@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace JSONParser.InspectionProcedure.ScriptCommandFactory
+namespace Inspector.POService.InspectionProcedure.ScriptCommandFactory
 {
     internal class ScriptCommand1Factory: IScriptCommandFactory
     {
@@ -21,7 +21,7 @@ namespace JSONParser.InspectionProcedure.ScriptCommandFactory
 
     internal class ScriptCommand3Factory : IScriptCommandFactory
     {
-        public ScriptCommandEntityBase GetScriptCommandEntity(JSONParser.InspectionProcedure.InspectionScriptCommand command, int maybeAddSequenceNumber = 0)
+        public ScriptCommandEntityBase GetScriptCommandEntity(InspectionScriptCommand command, int maybeAddSequenceNumber = 0)
         {
             var scriptCommand = (command.data);
             return new ScriptCommand3Entity
@@ -72,7 +72,7 @@ namespace JSONParser.InspectionProcedure.ScriptCommandFactory
 
     internal class ScriptCommand41Facotry: IScriptCommandFactory
     {
-        public ScriptCommandEntityBase GetScriptCommandEntity(JSONParser.InspectionProcedure.InspectionScriptCommand command, int maybeAddSequenceNumber = 0)
+        public ScriptCommandEntityBase GetScriptCommandEntity(InspectionScriptCommand command, int maybeAddSequenceNumber = 0)
         {
             var scriptCommand41Json = (command.data);
             var scriptCommand =

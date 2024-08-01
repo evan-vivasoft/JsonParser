@@ -10,7 +10,7 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
-namespace JSONParser.InspectionResults.Model
+namespace Inspector.POService.InspectionResults.Model
 {
     #region Initialization enumerations
     /// <summary>

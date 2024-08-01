@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace JSONParser.InspectionResults.Model
+namespace Inspector.POService.InspectionResults.Model
 {
     /// <summary>
     /// Model representing a measurement result file
