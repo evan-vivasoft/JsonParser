@@ -47,6 +47,13 @@ namespace Inspector.POService.LicenseValidator
                     .Select(nic => nic.GetPhysicalAddress().ToString())
                     .FirstOrDefault();
 
+                if (!string.IsNullOrEmpty(macAddress))
+                {
+                    macAddress = 
+                        string.Join(":", Enumerable.Range(0, macAddress.Length / 2)
+                                                            .Select(i => macAddress.Substring(i * 2, 2)));
+                }
+
                 return Environment.MachineName + "-" + macAddress;
             }
         }
